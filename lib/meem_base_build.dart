@@ -1,8 +1,7 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
 library;
 
-export 'src/meem_base_build_base.dart';
-
-// TODO: Export any libraries intended for clients of this package.
+export 'src/annotation/annotation.dart';
+export 'src/core/core.dart';
+export 'src/generators/generators.dart';
+export 'src/options/options.dart';
+export 'src/parameters/parameters.dart';
