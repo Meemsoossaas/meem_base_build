@@ -1,0 +1,14 @@
+targets:
+  $default:
+    builders:
+      meem_base_build|generator:
+        generate_for:
+          - lib/**/*.dart
+
+builders:
+  generator:
+    import: 'package:meem_base_build/generator.dart'
+    builder_factories: ["eventExceptionGeneratorBuilder"]
+    build_extensions: { ".dart": [ ".g.dart" ] }
+    auto_apply: dependents
+    build_to: cache
