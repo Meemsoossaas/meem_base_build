@@ -6,21 +6,4 @@ targets:
           - lib/**/*.dart
 
 builders:
-  meem_base_build|meem_framework_generator:
-    import: 'package:meem_base_build/generators/meem_framework_generator.dart'
-    builder_factories: ['frameworkGeneratorBuilder']
-    build_extensions: {'.dart': ['.event.dart', '.exception.dart']}
     auto_apply: dependents
-    build_to: source
-  meem_base_build|meem_event_generator:
-    import: 'package:meem_base_build/generators/meem_event_generator.dart'
-    builder_factories: [ 'eventGeneratorBuilder' ]
-    build_extensions: { '.dart': [ '.event.dart', '.exception.dart' ] }
-    auto_apply: dependents
-    build_to: source
-  meem_base_build|meem_exception_generator:
-    import: 'package:meem_base_build/generators/meem_exception_generator.dart'
-    builder_factories: [ 'exceptionGeneratorBuilder' ]
-    build_extensions: { '.dart': [ '.event.dart', '.exception.dart' ] }
-    auto_apply: dependents
-    build_to: source
