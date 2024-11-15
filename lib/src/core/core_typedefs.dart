@@ -21,3 +21,8 @@ typedef BufferParameterResult = ({
   String optionalParameterResult,
   String mappedParameterResult,
 });
+
+typedef Generic = ({
+  String identifier,
+  Type extendedType,
+});

@@ -8,9 +8,16 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionG
 
   factory MeeMExceptionGenerator() => instance;
 
+  @internal
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
     // TODO: implement generateForAnnotatedElement
     throw UnimplementedError();
   }
+
+  @internal
+  Builder exceptionGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
+        [MeeMExceptionGenerator.instance],
+        'meem_exception_generator',
+      );
 }

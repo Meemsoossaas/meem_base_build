@@ -10,3 +10,4 @@ part 'meem_core_generator.dart';
 part 'meem_event_generator.dart';
 part 'meem_exception_generator.dart';
 part 'meem_framework_generator.dart';
+part 'meem_base_build_templates.dart';

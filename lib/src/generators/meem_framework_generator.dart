@@ -9,11 +9,18 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMFrameworkG
 
   factory MeeMFrameworkGenerator() => instance;
 
+  @internal
   @override
-  dynamic generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
-    if (element is! ClassElement) return;
-    final className = element.displayName;
+  Future<void> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) async {
+    if (element is! ClassElement) throw MeeMFrameworkGeneratorException();
+    final className = element.name;
   }
+
+  @internal
+  Builder frameworkGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
+        [MeeMExceptionGenerator.instance],
+        'meem_framework_generator',
+      );
 
   @override
   List<Object?> get props => List.empty();

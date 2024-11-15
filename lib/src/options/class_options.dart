@@ -16,6 +16,10 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
 
   final Parameters? parameters;
 
+  final List<Generic>? generics;
+
+  final bool frontFrameworkGenerics;
+
   const ClassOptions({
     required super.name,
     super.docDescription,
@@ -26,11 +30,26 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
     this.hasConstructor = true,
     this.constantConstructor,
     this.parameters,
-  }) : assert(
+    this.generics,
+  })  : frontFrameworkGenerics = false,
+        assert(
           (parameters != null && hasConstructor == true && constantConstructor != null) ||
               (parameters == null && hasConstructor == false && constantConstructor == null),
           '',
         );
+
+  const ClassOptions.framework({
+    required super.name,
+    super.docDescription,
+    this.prefixes,
+    this.extendedClass,
+    this.implements,
+    this.mixins,
+    this.hasConstructor = true,
+    this.parameters,
+    this.generics,
+    this.frontFrameworkGenerics = false,
+  }) : constantConstructor = false;
 
   factory ClassOptions.standard(String name) => ClassOptions(name: name);
 
@@ -40,6 +59,10 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
         prefixes,
         implements,
         mixins,
+        hasConstructor,
+        constantConstructor,
+        parameters,
+        generics,
       ] +
       super.props;
 }

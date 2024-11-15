@@ -1,18 +1,13 @@
 part of 'core.dart';
 
+@immutable
 abstract final class MeeMStringService {
-  static String lineBreak<T extends Iterable>(
-    T reference, [
-    String splitter = ',',
-  ]) {
-    final buffer = StringBuffer();
-    if (reference is Parameters) {
-      final split = (reference as Parameters).toString().replaceAll('[', '').replaceAll(']', '').trim().split(splitter);
-      for (final referencePoint in split) {
-        buffer.write('\n');
-      }
-    }
-    return buffer.toString();
+  static String formatList(List source) {
+    final sourceAsString = source.toString();
+    return sourceAsString
+      ..replaceAll('[', '')
+      ..replaceAll(']', '')
+      ..trim();
   }
 
   static BufferParameterResult classParameterLineBreak(
@@ -26,7 +21,9 @@ abstract final class MeeMStringService {
       final normalIndexedParameters = parameters[ParameterType.normal];
       if (normalIndexedParameters != null) {
         for (final parameter in normalIndexedParameters) {
-          normalBuffer.writeln('${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name},');
+          normalBuffer.writeln(
+            '${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name},',
+          );
         }
       }
     }
@@ -39,7 +36,8 @@ abstract final class MeeMStringService {
       if (optionalIndexedParameters != null) {
         for (final parameter in optionalIndexedParameters) {
           optionalBuffer.writeln(
-              '${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name}${parameter.defaultValue != null ? ' = ${parameter.defaultValue!}' : ''},');
+            '${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name}${parameter.defaultValue != null ? ' = ${parameter.defaultValue!}' : ''},',
+          );
         }
       }
     }
@@ -48,7 +46,8 @@ abstract final class MeeMStringService {
       if (mappedIndexedParameters != null) {
         for (final parameter in mappedIndexedParameters) {
           mappedBuffer.writeln(
-              '${parameter.required ? 'required ' : ''}${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name}${parameter.defaultValue != null ? ' = ${parameter.defaultValue!}' : ''},');
+            '${parameter.required ? 'required ' : ''}${parameter.type.toString()}${parameter.nullable ? '?' : ''} ${parameter.name}${parameter.defaultValue != null ? ' = ${parameter.defaultValue!}' : ''},',
+          );
         }
       }
     }
@@ -70,34 +69,29 @@ abstract final class MeeMStringService {
     return snakeCase;
   }
 
-  static String fulfillTemplate<E extends MeeMBaseBuildOptions>({
-    required String name,
-    required E options,
-  }) {
-    // TODO: implement fulFillTemplate
-    throw UnimplementedError();
-  }
+  static String formatGenerics(List<Generic>? source) {}
 
   static String fulfillClassTemplate({
     required String name,
     required ClassOptions options,
+    MeeMBaseBuildTemplates? template,
   }) {
+    final classTemplateBuffer = StringBuffer();
     final parameterResult = options.parameters != null ? classParameterLineBreak(options.parameters!) : null;
-    return '''
-    ${options.docDescription != null ? '''
-    /// {@template ${toSnakeCase(name)}
-    ${options.docDescription!}
-    /// {@endtemplate}
-    ''' : ''}
-    @immutable
-    ${options.prefixes?.combine ?? 'class'} $name ${options.extendedClass != null ? 'extends ${options.extendedClass!.toString()}' : ''} ${options.mixins != null ? 'with ${options.mixins!.toString()
-          ..replaceAll('[', '')
-          ..replaceAll(']', '')
-          ..trim()}' : ''} ${options.implements != null ? 'implements ${options.implements!.toString()
-          ..replaceAll('[', '')
-          ..replaceAll(']', '')
-          ..trim()}' : ''} {
-        ${options.hasConstructor ? '''
+    switch (template) {
+      case MeeMBaseBuildTemplates.framework:
+        classTemplateBuffer.writeln('@immutable');
+        classTemplateBuffer.writeln(
+          '${MeeMFrameworkValidationService.validatePrefix(options.prefixes?.combine ?? 'class')} $name${MeeMStringService.formatGenerics(options.generics)}} ${options.extendedClass != null ? 'extends ${options.extendedClass!.toString()}' : ''} ${options.mixins != null ? 'with ${MeeMStringService.formatList(options.mixins!)}' : ''} ${options.implements != null ? 'implements ${MeeMStringService.formatList(options.implements!)}' : ''} {',
+        );
+        return classTemplateBuffer.toString();
+      default:
+        classTemplateBuffer.writeln('@immutable');
+        classTemplateBuffer.writeln(
+          '${options.prefixes?.combine ?? 'class'} $name${options.generics != null ? '<${MeeMStringService.formatList(options.generics!)}>' : ''} ${options.extendedClass != null ? 'extends ${options.extendedClass!.toString()}' : ''} ${options.mixins != null ? 'with ${MeeMStringService.formatList(options.mixins!)}' : ''} ${options.implements != null ? 'implements ${MeeMStringService.formatList(options.implements!)}' : ''} {',
+        );
+        classTemplateBuffer.writeln('''
+            ${options.hasConstructor ? '''
         ${options.constantConstructor ?? true ? options.parameters != null ? '''
         const $name(
           ${parameterResult?.normalParameterResult ?? ''}
@@ -120,7 +114,9 @@ abstract final class MeeMStringService {
         )
         ''' : '$name();'}
         ''' : ''}
+    ''');
+        classTemplateBuffer.writeln('}');
+        return classTemplateBuffer.toString();
     }
-    ''';
   }
 }

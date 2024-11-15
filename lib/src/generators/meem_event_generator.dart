@@ -9,11 +9,18 @@ final class MeeMEventGenerator extends GeneratorForAnnotation<MeeMEventGenerator
 
   factory MeeMEventGenerator() => instance;
 
+  @internal
   @override
   generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
     // TODO: implement generateForAnnotatedElement
     throw UnimplementedError();
   }
+
+  @internal
+  Builder eventGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
+        [MeeMEventGenerator.instance],
+        'meem_event_generator',
+      );
 
   @override
   List<Object?> get props => List.empty();
