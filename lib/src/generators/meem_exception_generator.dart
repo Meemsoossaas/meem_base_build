@@ -1,11 +1,12 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
-import 'package:meem_base_build/annotation.dart';
 import 'package:meta/meta.dart';
 import 'package:source_gen/source_gen.dart';
 
+import '../../meem_base_build.dart';
+
 @immutable
-final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionBuild> {
+final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionBuild> implements MeeMCodeGenerator {
   static const MeeMExceptionGenerator instance = MeeMExceptionGenerator._();
 
   const MeeMExceptionGenerator._();
@@ -13,14 +14,47 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionB
   factory MeeMExceptionGenerator() => instance;
 
   @override
-  generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
-    // TODO: implement generateForAnnotatedElement
-    throw UnimplementedError();
+  Future<void> generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async =>
+      _generateForAnnotatedElement(element, annotation, buildStep);
+
+  Future<void> _generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
+  ) async {
+    if (element is! ClassElement) throw MeeMExceptionGeneratorException();
+    final className = element.name;
+    final exceptionClassName = '${className}Exception';
+    final exceptionOutputId = buildStep.inputId.changeExtension('.exception.dart');
+    final exceptionClassResult = MeeMStringService.fulfillClassTemplate(
+      options: ClassOptions.framework(name: exceptionClassName),
+      objectType: FrameObjectType.exception,
+      template: MeeMBaseBuildTemplates.framework,
+    );
+    await buildStep.writeAsString(
+      exceptionOutputId,
+      exceptionClassResult,
+    );
   }
+
+  @override
+  bool get isSingleton => true;
+
+  @override
+  List<Object?> get props => List.empty();
+
+  @override
+  bool? get stringify => false;
 }
 
-Builder exceptionGeneratorBuilder(BuilderOptions options) =>
-    SharedPartBuilder([MeeMExceptionGenerator.instance], 'meem_exception_generator',
-        additionalOutputExtensions: [
-          ".exception.dart",
-        ]);
+Builder _exceptionGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
+      [MeeMExceptionGenerator.instance],
+      'meem_exception_generator',
+      additionalOutputExtensions: [".exception.dart"],
+    );
+
+Builder exceptionGeneratorBuilder(BuilderOptions options) => _exceptionGeneratorBuilder(options);

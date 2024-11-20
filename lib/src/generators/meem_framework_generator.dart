@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
+import 'package:meem_base_build/src/extensions/extensions.dart';
 import 'package:meta/meta.dart' show immutable;
 import 'package:source_gen/source_gen.dart';
 
@@ -18,14 +19,27 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
     Element element,
     ConstantReader annotation,
     BuildStep buildStep,
+  ) async =>
+      await _generateForAnnotatedElement(element, annotation, buildStep);
+
+  Future<void> _generateForAnnotatedElement(
+    Element element,
+    ConstantReader annotation,
+    BuildStep buildStep,
   ) async {
     if (element is! ClassElement) throw MeeMFrameworkGeneratorException();
     final className = element.name;
 
+    final eventOptions =
+        annotation.peek('eventOptions')?.mapValue.toEventClassOptions(MeeMBaseBuildTemplates.framework);
     final eventClassName = '${className}Event';
     final eventOutputId = buildStep.inputId.changeExtension('.event.dart');
     final eventClassResult = MeeMStringService.fulfillClassTemplate(
-      options: ClassOptions.framework(name: eventClassName),
+      options: eventOptions?.copyWith(
+            name: eventClassName,
+            template: MeeMBaseBuildTemplates.framework,
+          ) ??
+          ClassOptions.framework(name: eventClassName),
       objectType: FrameObjectType.event,
       template: MeeMBaseBuildTemplates.framework,
     );
@@ -33,12 +47,17 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
       eventOutputId,
       eventClassResult,
     );
-    print(eventClassResult);
 
+    final exceptionOptions =
+        annotation.peek('exceptionOptions')?.mapValue.toEventClassOptions(MeeMBaseBuildTemplates.framework);
     final exceptionClassName = '${className}Exception';
     final exceptionOutputId = buildStep.inputId.changeExtension('.exception.dart');
     final exceptionClassResult = MeeMStringService.fulfillClassTemplate(
-      options: ClassOptions.framework(name: exceptionClassName),
+      options: exceptionOptions?.copyWith(
+            name: exceptionClassName,
+            template: MeeMBaseBuildTemplates.framework,
+          ) ??
+          ClassOptions.framework(name: exceptionClassName),
       objectType: FrameObjectType.exception,
       template: MeeMBaseBuildTemplates.framework,
     );
@@ -46,9 +65,10 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
       exceptionOutputId,
       exceptionClassResult,
     );
-
-    print(exceptionClassResult);
   }
+
+  @override
+  bool get isSingleton => true;
 
   @override
   List<Object?> get props => List.empty();
@@ -57,7 +77,7 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
   bool? get stringify => false;
 }
 
-Builder frameworkGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
+Builder _frameworkGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMFrameworkGenerator.instance],
       'meem_framework_generator',
       additionalOutputExtensions: [
@@ -65,3 +85,5 @@ Builder frameworkGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
         ".exception.dart",
       ],
     );
+
+Builder frameworkGeneratorBuilder(BuilderOptions options) => _frameworkGeneratorBuilder(options);

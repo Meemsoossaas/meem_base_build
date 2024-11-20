@@ -2,9 +2,19 @@ part of 'annotation.dart';
 
 abstract base class MeeMBuildAnnotation extends MeeMCoreAnnotation {
   final MeeMBaseBuildTemplates template;
+  final Map<String, Object?>? eventOptions;
+  final Map<String, Object?>? exceptionClass;
 
-  const MeeMBuildAnnotation(this.template);
+  const MeeMBuildAnnotation(
+    this.template, {
+    this.eventOptions,
+    this.exceptionClass,
+  });
 
   @override
-  List<Object?> get props => [template];
+  List<Object?> get props => [
+        template,
+        eventOptions,
+        exceptionClass,
+      ];
 }

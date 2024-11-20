@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:meem_base_build/generators.dart';
+import 'package:meem_base_build/meem_base_build.dart';
 import 'package:meta/meta.dart';
 
 part 'meem_annotation_constants.dart';
