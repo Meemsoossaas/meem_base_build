@@ -12,6 +12,7 @@ typedef ParameterRecord<T extends Object> = ({
   T? defaultValue,
   bool required,
   bool nullable,
+  bool finalized,
 });
 
 typedef Parameters = Map<ParameterType, List<Parameter>>;
@@ -24,5 +25,11 @@ typedef BufferParameterResult = ({
 
 typedef Generic = ({
   String identifier,
-  Type extendedType,
+  Type? extendedType,
+});
+
+typedef GetterSetterProperty = ({
+  String name,
+  bool nullable,
+  bool setter,
 });

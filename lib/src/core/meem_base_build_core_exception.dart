@@ -1,6 +1,7 @@
 part of 'core.dart';
 
-abstract class MeeMBaseBuildCoreException<T, V extends Object> extends Equatable implements Object, Exception {
+abstract class MeeMBaseBuildCoreException<T, V extends Object> extends Equatable
+    implements Object, Exception {
   final String message;
 
   final ExceptionResult<T, V> result;

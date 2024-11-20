@@ -2,6 +2,8 @@ part of 'options.dart';
 
 @immutable
 final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
+  final MeeMBaseBuildTemplates? template;
+
   final ClassPrefixes? prefixes;
 
   final Type? extendedClass;
@@ -14,13 +16,17 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
 
   final bool? constantConstructor;
 
-  final Parameters? parameters;
+  final Parameters parameters;
 
-  final List<Generic>? generics;
+  final List<Generic> generics;
 
   final bool frontFrameworkGenerics;
 
-  const ClassOptions({
+  final Object? classAnnotation;
+
+  final List<GetterSetterProperty> getters;
+
+  ClassOptions({
     required super.name,
     super.docDescription,
     this.prefixes,
@@ -29,33 +35,49 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
     this.mixins,
     this.hasConstructor = true,
     this.constantConstructor,
-    this.parameters,
-    this.generics,
+    this.parameters = const {},
+    this.generics = const [],
+    this.classAnnotation,
+    this.getters = const [],
   })  : frontFrameworkGenerics = false,
+        template = null,
         assert(
-          (parameters != null && hasConstructor == true && constantConstructor != null) ||
-              (parameters == null && hasConstructor == false && constantConstructor == null),
+          (parameters.isNotEmpty && hasConstructor == true && constantConstructor != null) ||
+              (parameters.isEmpty && hasConstructor == false && constantConstructor == null),
           '',
         );
 
   const ClassOptions.framework({
     required super.name,
     super.docDescription,
-    this.prefixes,
-    this.extendedClass,
+    this.prefixes = ClassPrefixes.base,
     this.implements,
     this.mixins,
     this.hasConstructor = true,
-    this.parameters,
-    this.generics,
+    this.parameters = const {},
     this.frontFrameworkGenerics = false,
-  }) : constantConstructor = false;
+    this.getters = const [],
+  })  : constantConstructor = false,
+        classAnnotation = immutable,
+        extendedClass = MeeMCore,
+        template = MeeMBaseBuildTemplates.framework,
+        generics = const [
+          (
+            identifier: 'T',
+            extendedType: Object,
+          ),
+        ];
 
   factory ClassOptions.standard(String name) => ClassOptions(name: name);
+
+  bool get isForEvent => name.contains('Event');
+
+  bool get isForException => name.contains('Exception');
 
   @override
   List<Object?> get props =>
       [
+        extendedClass,
         prefixes,
         implements,
         mixins,
@@ -63,6 +85,8 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
         constantConstructor,
         parameters,
         generics,
+        classAnnotation,
+        getters,
       ] +
       super.props;
 }

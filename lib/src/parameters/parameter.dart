@@ -5,8 +5,12 @@ final class Parameter<T extends Object> extends MeeMBaseBuildParameter<T> {
   const Parameter({
     required String name,
     bool nullable = false,
-  }) : super(name, null, true, nullable);
+    bool finalized = true,
+  }) : super(name, null, true, nullable, finalized);
 
   @override
   ParameterType get parameterType => ParameterType.normal;
+
+  @override
+  String get asParameter => '$type${nullable ? '?' : ''} $name';
 }

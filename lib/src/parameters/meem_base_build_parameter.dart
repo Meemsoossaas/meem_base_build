@@ -6,15 +6,19 @@ sealed class MeeMBaseBuildParameter<T extends Object> extends Equatable implemen
   final T? defaultValue;
   final bool required;
   final bool nullable;
+  final bool finalized;
 
   const MeeMBaseBuildParameter(
     this.name,
     this.defaultValue,
     this.required,
     this.nullable,
+    this.finalized,
   );
 
   ParameterType get parameterType;
+
+  String get asParameter;
 
   Type get type => defaultValue.runtimeType;
 
@@ -24,7 +28,10 @@ sealed class MeeMBaseBuildParameter<T extends Object> extends Equatable implemen
         defaultValue: defaultValue,
         required: required,
         nullable: nullable,
+        finalized: finalized,
       );
+
+  String get asProperty => finalized ? 'final $type${nullable ? '?' : ''} $name' : 'final ${type} $name';
 
   @override
   List<Object?> get props => [
@@ -32,5 +39,6 @@ sealed class MeeMBaseBuildParameter<T extends Object> extends Equatable implemen
         defaultValue,
         required,
         nullable,
+        finalized,
       ];
 }

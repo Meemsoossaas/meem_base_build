@@ -1,21 +1,16 @@
 part of 'annotation.dart';
 
-@MeeMFrameworkGeneratorException()
-final class _MeeMBuild extends MeeMBuildAnnotation {
-  const _MeeMBuild();
+@internal
+final class MeeMBuild extends MeeMBuildAnnotation {
+  const MeeMBuild(super.template);
 }
 
-@MeeMFrameworkGeneratorException()
-final class _UnMeeMBuild extends MeeMBuildAnnotation {
-  const _UnMeeMBuild();
+@internal
+final class MeeMEventBuild extends MeeMBuildAnnotation {
+  const MeeMEventBuild(super.template);
 }
 
-@MeeMEventGeneratorException()
-final class _MeeMEventBuild extends MeeMBuildAnnotation {
-  const _MeeMEventBuild();
-}
-
-@MeeMExceptionGeneratorException()
-final class _MeeMExceptionBuild extends MeeMBuildAnnotation {
-  const _MeeMExceptionBuild();
+@internal
+final class MeeMExceptionBuild extends MeeMBuildAnnotation {
+  const MeeMExceptionBuild(super.template);
 }

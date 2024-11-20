@@ -1,9 +1,13 @@
 part of 'annotation.dart';
 
-const meem = _MeeMBuild();
+const meem = MeeMBuild(
+  MeeMBaseBuildTemplates.framework,
+);
 
-const unmeem = _UnMeeMBuild();
+const event = MeeMEventBuild(
+  MeeMBaseBuildTemplates.framework,
+);
 
-const event = _MeeMEventBuild();
-
-const exception = _MeeMExceptionBuild();
+const exception = MeeMExceptionBuild(
+  MeeMBaseBuildTemplates.framework,
+);

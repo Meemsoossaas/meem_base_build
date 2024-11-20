@@ -1,8 +1,8 @@
 part of 'options.dart';
 
 @immutable
-sealed class MeeMBaseBuildOptions<E extends Element> extends Equatable implements Object {
-  @protected
+sealed class MeeMBaseBuildOptions<E extends Element> extends Equatable
+    implements Object {
   final String name;
 
   final String? docDescription;

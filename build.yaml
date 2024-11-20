@@ -1,9 +1,15 @@
 targets:
   $default:
     builders:
-      meem_base_build|generator:
+      meem_base_build|meem_framework_generator:
         generate_for:
           - lib/**/*.dart
 
 builders:
+  meem_base_build|meem_framework_generator:
+    import: "package:meem_base_build/src/generators/meem_framework_generator.dart"
+    builder_factories: [ "frameworkGeneratorBuilder" ]
+    build_extensions: { ".dart": [ ".event.dart", ".exception.dart", '.g.dart', '.meem.dart' ] }
     auto_apply: dependents
+    build_to: source
+    applies_builders: ["source_gen:combining_builder"]
