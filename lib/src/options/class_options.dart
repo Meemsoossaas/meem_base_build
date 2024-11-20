@@ -24,7 +24,7 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
 
   final Object? classAnnotation;
 
-  final List<GetterSetterProperty> getters;
+  final GetterSetterProperties getters;
 
   ClassOptions({
     required super.name,
@@ -73,6 +73,35 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
   bool get isForEvent => name.contains('Event');
 
   bool get isForException => name.contains('Exception');
+
+  ClassOptions copyWith({
+    required String? name,
+    required MeeMBaseBuildTemplates template,
+    ClassPrefixes? prefixes,
+    Type? extendedClass,
+    List<Type>? implements,
+    List<Type>? mixins,
+    bool? hasConstructor,
+    Parameters? parameters,
+    List<Generic>? generics,
+    bool? frontFrameworkGenerics,
+    Object? classAnnotation,
+    GetterSetterProperties? getters,
+  }) {
+    switch (template) {
+      case MeeMBaseBuildTemplates.framework:
+        return ClassOptions.framework(
+          name: name ?? this.name,
+          prefixes: prefixes ?? this.prefixes,
+          implements: implements ?? this.implements,
+          mixins: mixins ?? this.mixins,
+          hasConstructor: hasConstructor ?? this.hasConstructor,
+          parameters: parameters ?? this.parameters,
+          frontFrameworkGenerics: frontFrameworkGenerics ?? this.frontFrameworkGenerics,
+          getters: getters ?? this.getters,
+        );
+    }
+  }
 
   @override
   List<Object?> get props =>

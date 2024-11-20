@@ -33,3 +33,5 @@ typedef GetterSetterProperty = ({
   bool nullable,
   bool setter,
 });
+
+typedef GetterSetterProperties = List<GetterSetterProperty>;
