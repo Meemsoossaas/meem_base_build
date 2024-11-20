@@ -1,5 +1,10 @@
 part of 'parameters.dart';
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
 @immutable
 final class Parameter<T extends Object> extends MeeMBaseBuildParameter<T> {
   const Parameter({

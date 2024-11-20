@@ -15,5 +15,4 @@ part 'meem_core_generator_exception.dart';
 part 'meem_event_generator_exception.dart';
 part 'meem_exception_generator_exception.dart';
 part 'meem_framework_generator_exception.dart';
-part 'meem_framework_validation_service.dart';
 part 'meem_string_service.dart';

@@ -1,8 +1,17 @@
 part of 'core.dart';
 
-@immutable
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
 abstract final class MeeMStringService {
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatList(List source) {
     final buffer = StringBuffer();
     for (int i = 0; i < source.length; i++) {
@@ -11,7 +20,12 @@ abstract final class MeeMStringService {
     return buffer.toString();
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static BufferParameterResult classParameterLineBreak(
     Parameters parameters, [
     String splitter = ',',
@@ -58,6 +72,11 @@ abstract final class MeeMStringService {
     );
   }
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   static String _formatProperties(MeeMBaseBuildTemplates template, Parameters properties) {
     if (properties.isEmpty) return '';
     switch (template) {
@@ -81,7 +100,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String toSnakeCase(String name) {
     final snakeCase = name
         .replaceAllMapped(
@@ -93,7 +117,12 @@ abstract final class MeeMStringService {
     return snakeCase;
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String regainOriginalName(String className) {
     if (className.contains('Event')) {
       return className.replaceAll('Event', '');
@@ -103,7 +132,12 @@ abstract final class MeeMStringService {
     throw Exception();
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatPrefix({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -115,7 +149,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatAnnotation({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -161,7 +200,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatClassHeader({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -223,7 +267,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatProperties({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -238,44 +287,11 @@ abstract final class MeeMStringService {
     }
   }
 
-  static String _formatConstructor({
-    required ClassOptions options,
-    required FrameObjectType objectType,
-    required FormatClassConstructorStep step,
-    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-  }) {
-    switch (template) {
-      case MeeMBaseBuildTemplates.framework:
-        switch (step) {
-          case FormatClassConstructorStep.constructorName:
-            return '\t${options.name}';
-          case FormatClassConstructorStep.parameters:
-            final buffer = StringBuffer();
-            final paramsResult = classParameterLineBreak(options.parameters);
-            buffer.write('(');
-            if (paramsResult.normalParameterResult.isEmpty &&
-                paramsResult.optionalParameterResult.isEmpty &&
-                paramsResult.mappedParameterResult.isEmpty) {
-              buffer.writeln(');');
-              return buffer.toString();
-            }
-            if (paramsResult.normalParameterResult.isNotEmpty) {
-              buffer.writeln(paramsResult.normalParameterResult);
-            }
-            if (paramsResult.optionalParameterResult.isNotEmpty) {
-              buffer.writeln(paramsResult.optionalParameterResult);
-            }
-            if (paramsResult.mappedParameterResult.isNotEmpty) {
-              buffer.writeln(paramsResult.mappedParameterResult);
-            }
-            buffer.writeln(');');
-            return buffer.toString();
-          default:
-            return '';
-        }
-    }
-  }
-
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   @internal
   static String formatConstructor({
     required ClassOptions options,
@@ -329,7 +345,50 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  static String _formatConstructor({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    required FormatClassConstructorStep step,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) {
+    switch (template) {
+      case MeeMBaseBuildTemplates.framework:
+        switch (step) {
+          case FormatClassConstructorStep.constructorName:
+            return '\t${options.name}';
+          case FormatClassConstructorStep.parameters:
+            final buffer = StringBuffer();
+            final paramsResult = classParameterLineBreak(options.parameters);
+            buffer.write('(');
+            if (paramsResult.normalParameterResult.isEmpty &&
+                paramsResult.optionalParameterResult.isEmpty &&
+                paramsResult.mappedParameterResult.isEmpty) {
+              buffer.writeln(');');
+              return buffer.toString();
+            }
+            if (paramsResult.normalParameterResult.isNotEmpty) {
+              buffer.writeln(paramsResult.normalParameterResult);
+            }
+            if (paramsResult.optionalParameterResult.isNotEmpty) {
+              buffer.writeln(paramsResult.optionalParameterResult);
+            }
+            if (paramsResult.mappedParameterResult.isNotEmpty) {
+              buffer.writeln(paramsResult.mappedParameterResult);
+            }
+            buffer.writeln(');');
+            return buffer.toString();
+          default:
+            return '';
+        }
+    }
+  }
+
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String formatOverrides({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -352,7 +411,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  @internal
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  @protected
   static String classFormatProcess({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -408,6 +472,11 @@ abstract final class MeeMStringService {
     return classFormatBuffer.toString();
   }
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   static String fulfillClassTemplate({
     required ClassOptions options,
     required FrameObjectType objectType,

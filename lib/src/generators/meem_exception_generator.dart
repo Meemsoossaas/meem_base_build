@@ -5,8 +5,18 @@ import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';
 
-@immutable
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@protected
 final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionBuild> implements MeeMCodeGenerator {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   static const MeeMExceptionGenerator instance = MeeMExceptionGenerator._();
 
   const MeeMExceptionGenerator._();
@@ -51,10 +61,15 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionB
   bool? get stringify => false;
 }
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+Builder exceptionGeneratorBuilder(BuilderOptions options) => _exceptionGeneratorBuilder(options);
+
 Builder _exceptionGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMExceptionGenerator.instance],
       'meem_exception_generator',
       additionalOutputExtensions: [".exception.dart"],
     );
-
-Builder exceptionGeneratorBuilder(BuilderOptions options) => _exceptionGeneratorBuilder(options);

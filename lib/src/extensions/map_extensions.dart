@@ -1,6 +1,16 @@
 part of 'extensions.dart';
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
 extension MapExtensions<K, V> on Map<K, V> {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   ClassOptions toEventClassOptions(MeeMBaseBuildTemplates template) {
     switch (template) {
       case MeeMBaseBuildTemplates.framework:

@@ -1,13 +1,23 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:meem_base_build/src/extensions/extensions.dart';
-import 'package:meta/meta.dart' show immutable;
+import 'package:meta/meta.dart' show immutable, protected;
 import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';
 
-@immutable
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@protected
 final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> implements MeeMCodeGenerator {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   static const MeeMFrameworkGenerator instance = MeeMFrameworkGenerator._();
 
   const MeeMFrameworkGenerator._();
@@ -77,6 +87,13 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
   bool? get stringify => false;
 }
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+Builder frameworkGeneratorBuilder(BuilderOptions options) => _frameworkGeneratorBuilder(options);
+
 Builder _frameworkGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMFrameworkGenerator.instance],
       'meem_framework_generator',
@@ -85,5 +102,3 @@ Builder _frameworkGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
         ".exception.dart",
       ],
     );
-
-Builder frameworkGeneratorBuilder(BuilderOptions options) => _frameworkGeneratorBuilder(options);

@@ -1,21 +1,54 @@
 part of 'options.dart';
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@protected
 enum ParameterType {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   normal(
     openingBracket: '(',
     closingBracket: ')',
   ),
+
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   optional(
     openingBracket: '[',
     closingBracket: ']',
   ),
+
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   mapped(
     openingBracket: '{',
     closingBracket: '}',
   );
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final String openingBracket;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final String closingBracket;
 
   const ParameterType({
@@ -23,9 +56,21 @@ enum ParameterType {
     required this.closingBracket,
   });
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   String get combined => '$openingBracket$closingBracket';
 
-  bool combinable(ParameterType other) {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
+  bool combinable(ParameterType other) => _combinable(other);
+
+  bool _combinable(ParameterType other) {
     switch (this) {
       case ParameterType.normal:
         switch (other) {

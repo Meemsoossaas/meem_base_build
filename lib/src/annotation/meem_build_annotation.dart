@@ -1,5 +1,11 @@
 part of 'annotation.dart';
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@internal
 abstract base class MeeMBuildAnnotation extends MeeMCoreAnnotation {
   final MeeMBaseBuildTemplates template;
   final Map<String, Object?>? eventOptions;

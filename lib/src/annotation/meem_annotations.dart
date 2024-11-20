@@ -1,6 +1,11 @@
 part of 'annotation.dart';
 
-@internal
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@immutable
 final class MeeMBuild extends MeeMBuildAnnotation {
   const MeeMBuild(
     super.template, {
@@ -9,20 +14,28 @@ final class MeeMBuild extends MeeMBuildAnnotation {
   });
 }
 
-@internal
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@immutable
 final class MeeMEventBuild extends MeeMBuildAnnotation {
   const MeeMEventBuild(
     super.template, {
     super.eventOptions,
-    super.exceptionClass,
   });
 }
 
-@internal
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@immutable
 final class MeeMExceptionBuild extends MeeMBuildAnnotation {
   const MeeMExceptionBuild(
     super.template, {
-    super.eventOptions,
     super.exceptionClass,
   });
 }

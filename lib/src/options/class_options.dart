@@ -1,29 +1,94 @@
 part of 'options.dart';
 
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
 @immutable
 final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final MeeMBaseBuildTemplates? template;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final ClassPrefixes? prefixes;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final Type? extendedClass;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final List<Type>? implements;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final List<Type>? mixins;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final bool hasConstructor;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final bool? constantConstructor;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final Parameters parameters;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final List<Generic> generics;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final bool frontFrameworkGenerics;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final Object? classAnnotation;
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   final GetterSetterProperties getters;
 
   ClassOptions({
@@ -47,6 +112,11 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
           '',
         );
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   const ClassOptions.framework({
     required super.name,
     super.docDescription,
@@ -68,12 +138,32 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
           ),
         ];
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   factory ClassOptions.standard(String name) => ClassOptions(name: name);
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   bool get isForEvent => name.contains('Event');
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   bool get isForException => name.contains('Exception');
 
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   ClassOptions copyWith({
     required String? name,
     required MeeMBaseBuildTemplates template,

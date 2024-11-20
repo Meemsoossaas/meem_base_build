@@ -1,6 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:meem_base_build/meem_base_build.dart';
-import 'package:meta/meta.dart';
+import 'package:equatable/equatable.dart' show Equatable;
+import 'package:meem_base_build/meem_base_build.dart' show MeeMBaseBuildTemplates;
+import 'package:meta/meta.dart' show immutable, internal, protected;
 
 part 'meem_annotation_constants.dart';
 part 'meem_annotations.dart';

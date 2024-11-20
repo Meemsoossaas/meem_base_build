@@ -1,12 +1,22 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
-import 'package:meta/meta.dart' show immutable;
+import 'package:meta/meta.dart' show immutable, protected;
 import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';
 
-@immutable
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@protected
 final class MeeMEventGenerator extends GeneratorForAnnotation<MeeMEventBuild> implements MeeMCodeGenerator {
+  /// {@template meem}
+  ///
+  ///
+  ///
+  /// {@endtemplate}
   static const MeeMEventGenerator instance = MeeMEventGenerator._();
 
   const MeeMEventGenerator._();
@@ -45,7 +55,14 @@ final class MeeMEventGenerator extends GeneratorForAnnotation<MeeMEventBuild> im
   bool get isSingleton => true;
 }
 
-Builder eventGeneratorBuilder(BuilderOptions options) => SharedPartBuilder(
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+Builder eventGeneratorBuilder(BuilderOptions options) => _eventGeneratorBuilder(options);
+
+Builder _eventGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMEventGenerator.instance],
       'meem_event_generator',
       additionalOutputExtensions: ['.event.dart'],

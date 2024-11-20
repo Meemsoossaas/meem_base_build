@@ -1,6 +1,11 @@
 part of 'core.dart';
 
-/// mimic class
+/// {@template meem}
+///
+///
+///
+/// {@endtemplate}
+@protected
 abstract base class MeeMCore<EVENT extends MeeMCoreEvent, EXCEPTION extends MeeMCoreException> {
   EXCEPTION get exception;
 }
