@@ -38,8 +38,7 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
     if (element is! ClassElement) throw MeeMFrameworkGeneratorException();
     final className = element.name;
 
-    final eventOptions =
-        annotation.peek('eventOptions')?.mapValue.toEventClassOptions(MeeMBaseBuildTemplates.framework);
+    final eventOptions = annotation.peek('eventOptions')?.mapValue.toClassOptions(MeeMBaseBuildTemplates.framework);
     final eventClassName = '${className}Event';
     final eventOutputId = buildStep.inputId.changeExtension('.event.dart');
     final eventClassResult = MeeMStringService.fulfillClassTemplate(
@@ -57,7 +56,7 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
     );
 
     final exceptionOptions =
-        annotation.peek('exceptionOptions')?.mapValue.toEventClassOptions(MeeMBaseBuildTemplates.framework);
+        annotation.peek('exceptionOptions')?.mapValue.toClassOptions(MeeMBaseBuildTemplates.framework);
     final exceptionClassName = '${className}Exception';
     final exceptionOutputId = buildStep.inputId.changeExtension('.exception.dart');
     final exceptionClassResult = MeeMStringService.fulfillClassTemplate(
