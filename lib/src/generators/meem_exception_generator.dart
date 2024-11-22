@@ -5,22 +5,20 @@ import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';
 
-/// {@template meem}
+/// {@template meem_exception_generator}
 ///
-///
+/// The code generator for exception classes which are based on [MeeMCoreException].
 ///
 /// {@endtemplate}
 @protected
 final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionBuild> implements MeeMCodeGenerator {
-  /// {@template meem}
-  ///
-  ///
-  ///
-  /// {@endtemplate}
+  /// {@macro meem_exception_generator}
   static const MeeMExceptionGenerator instance = MeeMExceptionGenerator._();
 
+  @override
   const MeeMExceptionGenerator._();
 
+  /// {@macro meem_exception_generator}
   factory MeeMExceptionGenerator() => instance;
 
   @override
@@ -29,8 +27,9 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionB
     ConstantReader annotation,
     BuildStep buildStep,
   ) async =>
-      _generateForAnnotatedElement(element, annotation, buildStep);
+      await _generateForAnnotatedElement(element, annotation, buildStep);
 
+  @protected
   Future<void> _generateForAnnotatedElement(
     Element element,
     ConstantReader annotation,
@@ -52,7 +51,7 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionB
   }
 
   @override
-  bool get isSingleton => true;
+  bool get isSingleton => MeeMCoreGenerator.generatorsAreSingleton;
 
   @override
   List<Object?> get props => List.empty();
@@ -61,13 +60,15 @@ final class MeeMExceptionGenerator extends GeneratorForAnnotation<MeeMExceptionB
   bool? get stringify => false;
 }
 
-/// {@template meem}
+/// {@template meem_exception_generator_exception_generator_builder}
 ///
-///
+/// The affiliated builder for [MeeMExceptionGenerator].
 ///
 /// {@endtemplate}
+@protected
 Builder exceptionGeneratorBuilder(BuilderOptions options) => _exceptionGeneratorBuilder(options);
 
+@protected
 Builder _exceptionGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMExceptionGenerator.instance],
       'meem_exception_generator',

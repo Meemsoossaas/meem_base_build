@@ -6,3 +6,4 @@ part 'mapped_parameter.dart';
 part 'meem_base_build_parameter.dart';
 part 'optional_parameter.dart';
 part 'parameter.dart';
+part 'parameter_type.dart';

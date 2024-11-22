@@ -73,11 +73,14 @@
     </section>
 
     
+<section class="desc markdown">
+  <p>Converts this into a single format line of a property expression.</p>
+</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">String get asProperty =&gt; finalized ? &#39;final $type${nullable ? &#39;?&#39; : &#39;&#39;} $name&#39; : &#39;final ${type} $name&#39;;</code></pre>
+  <pre class="language-dart"><code class="language-dart">String get asProperty =&gt; _asProperty;</code></pre>
 </section>
 
   </section>

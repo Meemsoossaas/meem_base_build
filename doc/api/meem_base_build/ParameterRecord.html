@@ -63,17 +63,27 @@
     <section class="multi-line-signature">
         
   
+<div>
+  <ol class="annotation-list">
+    <li>@<a href="https://pub.dev/documentation/meta/1.16.0/meta/internal-constant.html">internal</a></li>
+  </ol>
+</div>
 <span class="name ">ParameterRecord</span>&lt;<wbr><span class="type-parameter">T extends Object</span>&gt; = (<span class="field">{<span class="type-annotation">T?</span> <span class="field-name">defaultValue</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/bool-class.html">bool</a></span> <span class="field-name">finalized</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="field-name">name</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/bool-class.html">bool</a></span> <span class="field-name">nullable</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/bool-class.html">bool</a></span> <span class="field-name">required</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/Type-class.html">Type</a></span> <span class="field-name">type</span>}</span>)</span>
 
 
     </section>
 
     
+<section class="desc markdown">
+  <p>A record representing a parameter of a class where <code>T</code> is the <a href="https://api.dart.dev/stable/3.5.3/dart-core/Type-class.html">Type</a> itself.
+This can be converted as so via <a href="../meem_base_build/Parameter-class.html">Parameter</a></p>
+</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">typedef ParameterRecord&lt;T extends Object&gt; = ({
+  <pre class="language-dart"><code class="language-dart">@internal
+typedef ParameterRecord&lt;T extends Object&gt; = ({
   Type type,
   String name,
   T? defaultValue,

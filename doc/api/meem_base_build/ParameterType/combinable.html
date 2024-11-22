@@ -71,42 +71,15 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Checks, if <code>other</code> (with <code>this</code>) is in a combined parameter scenario compatible.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">bool combinable(ParameterType other) {
-  switch (this) {
-    case ParameterType.normal:
-      switch (other) {
-        case ParameterType.normal:
-          throw Exception();
-        case ParameterType.optional:
-          return true;
-        case ParameterType.mapped:
-          return true;
-      }
-    case ParameterType.optional:
-      switch (other) {
-        case ParameterType.normal:
-          return true;
-        case ParameterType.optional:
-          throw Exception();
-        case ParameterType.mapped:
-          return false;
-      }
-    case ParameterType.mapped:
-      switch (other) {
-        case ParameterType.normal:
-          return true;
-        case ParameterType.optional:
-          return false;
-        case ParameterType.mapped:
-          throw Exception();
-      }
-  }
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">bool combinable(ParameterType other) =&gt; _combinable(other);</code></pre>
 </section>
 
 

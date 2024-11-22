@@ -1,12 +1,13 @@
 part of 'parameters.dart';
 
-/// {@template meem}
+/// {@template mapped_parameter}
 ///
-///
+/// A class which presents a parameter with the type [ParameterType.mapped].
 ///
 /// {@endtemplate}
 @immutable
 final class MappedParameter<T extends Object> extends MeeMBaseBuildParameter<T> {
+  /// {@macro mapped_parameter}
   const MappedParameter({
     required String name,
     T? defaultValue,

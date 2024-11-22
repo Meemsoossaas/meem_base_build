@@ -73,6 +73,21 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Selects the class template process via <code>template</code>.</p>
+<h1 id="step-1---formatprefix">Step 1 -&gt; <a href="../../meem_base_build/MeeMStringService/formatPrefix.html">formatPrefix</a></h1>
+<p>{@macro meem_string_service_format_prefix}</p>
+<h1 id="step-2---formatannotation">Step 2 -&gt; <a href="../../meem_base_build/MeeMStringService/formatAnnotation.html">formatAnnotation</a></h1>
+<p>{@macro meem_string_service_format_annotation}</p>
+<h1 id="step-3---formatclassheader">Step 3 -&gt; <a href="../../meem_base_build/MeeMStringService/formatClassHeader.html">formatClassHeader</a></h1>
+<p>{@macro meem_string_service_format_class_header}</p>
+<h1 id="step-4---formatproperties">Step 4 -&gt; <a href="../../meem_base_build/MeeMStringService/formatProperties.html">formatProperties</a></h1>
+<p>{@macro meem_string_service_format_properties}</p>
+<h1 id="step-5---formatconstructor">Step 5 -&gt; <a href="../../meem_base_build/MeeMStringService/formatConstructor.html">formatConstructor</a></h1>
+<p>{@macro meem_string_service_format_constructor}</p>
+<h1 id="step-6---formatoverrides">Step 6 -&gt; <a href="../../meem_base_build/MeeMStringService/formatOverrides.html">formatOverrides</a></h1>
+<p>{@macro meem_string_service_format_overrides}</p>
+</section>
 
 
     
@@ -82,16 +97,12 @@
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  switch (template) {
-    case MeeMBaseBuildTemplates.framework:
-      return classFormatProcess(
-        options: options,
-        objectType: objectType,
-        template: template,
-      );
-  }
-}</code></pre>
+}) =&gt;
+    _fulfillClassTemplate(
+      options: options,
+      objectType: objectType,
+      template: template,
+    );</code></pre>
 </section>
 
 

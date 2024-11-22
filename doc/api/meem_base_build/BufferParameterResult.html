@@ -63,17 +63,43 @@
     <section class="multi-line-signature">
         
   
+<div>
+  <ol class="annotation-list">
+    <li>@<a href="https://pub.dev/documentation/meta/1.16.0/meta/internal-constant.html">internal</a></li>
+  </ol>
+</div>
 <span class="name ">BufferParameterResult</span> = (<span class="field">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="field-name">mappedParameterResult</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="field-name">normalParameterResult</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="field-name">optionalParameterResult</span>}</span>)</span>
 
 
     </section>
 
     
+<section class="desc markdown">
+  <p>A record which provides all parameters as strings.</p>
+<p>Valid scenarios include:</p>
+<ul>
+<li>Each result is an empty string (no parameters)</li>
+<li>One result is an empty string
+<ul>
+<li>This can lead to: <a href="../meem_base_build/ParameterType.html">ParameterType.normal</a> + <a href="../meem_base_build/ParameterType.html">ParameterType.optional</a></li>
+<li>or: <a href="../meem_base_build/ParameterType.html">ParameterType.normal</a> + <a href="../meem_base_build/ParameterType.html">ParameterType.mapped</a></li>
+</ul>
+</li>
+<li>Two results are an empty string
+<ul>
+<li>This can lead to: <a href="../meem_base_build/ParameterType.html">ParameterType.normal</a></li>
+<li>or: <a href="../meem_base_build/ParameterType.html">ParameterType.optional</a></li>
+<li>or: <a href="../meem_base_build/ParameterType.html">ParameterType.mapped</a></li>
+</ul>
+</li>
+</ul>
+</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">typedef BufferParameterResult = ({
+  <pre class="language-dart"><code class="language-dart">@internal
+typedef BufferParameterResult = ({
   String normalParameterResult,
   String optionalParameterResult,
   String mappedParameterResult,

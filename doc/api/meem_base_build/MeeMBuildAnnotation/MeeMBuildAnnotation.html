@@ -62,17 +62,29 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">MeeMBuildAnnotation</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="-param-template"><span class="type-annotation"><a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates</a></span> <span class="parameter-name">template</span></span></li>
-</ol>)
+      <span class="name ">MeeMBuildAnnotation</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-template"><span class="type-annotation"><a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates</a></span> <span class="parameter-name">template</span> = <span class="default-value">MeeMBaseBuildTemplates.framework</span>, </span></li>
+<li><span class="parameter" id="-param-eventOptions"><span class="type-annotation"><a href="../../meem_base_build/AnnotationMap.html">AnnotationMap</a>?</span> <span class="parameter-name">eventOptions</span>, </span></li>
+<li><span class="parameter" id="-param-exceptionOptions"><span class="type-annotation"><a href="../../meem_base_build/AnnotationMap.html">AnnotationMap</a>?</span> <span class="parameter-name">exceptionOptions</span>, </span></li>
+</ol>})
     </section>
 
     
+<section class="desc markdown">
+  <p>A class which serves the base for the usable annotation.
+See: <a href="../../meem_base_build/MeeMBuild-class.html">MeeMBuild</a>, <a href="../../meem_base_build/MeeMEventBuild-class.html">MeeMEventBuild</a> &amp; <a href="../../meem_base_build/MeeMExceptionBuild-class.html">MeeMExceptionBuild</a></p>
+<p>Currently for <a href="../../meem_base_build/MeeMBuildAnnotation/template.html">template</a>, there is one legitimate template for generating code (<a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates.framework</a>).
+This means currently, <a href="../../meem_base_build/MeeMBuildAnnotation/template.html">template</a> shouldn't be modified.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const MeeMBuildAnnotation(this.template);</code></pre>
+  <pre class="language-dart"><code class="language-dart">const MeeMBuildAnnotation({
+  this.template = MeeMBaseBuildTemplates.framework,
+  this.eventOptions,
+  this.exceptionOptions,
+});</code></pre>
 </section>
 
 

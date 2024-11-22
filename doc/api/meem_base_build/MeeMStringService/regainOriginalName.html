@@ -76,20 +76,16 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Tries to regain the original name which was provided via <a href="../../meem_base_build/ClassOptions-class.html">ClassOptions</a>.</p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">@internal
-static String regainOriginalName(String className) {
-  if (className.contains(&#39;Event&#39;)) {
-    return className.replaceAll(&#39;Event&#39;, &#39;&#39;);
-  } else if (className.contains(&#39;Exception&#39;)) {
-    return className.replaceAll(&#39;Exception&#39;, &#39;&#39;);
-  }
-  throw Exception();
-}</code></pre>
+static String regainOriginalName(String className) =&gt; _regainOriginalName(className);</code></pre>
 </section>
 
 

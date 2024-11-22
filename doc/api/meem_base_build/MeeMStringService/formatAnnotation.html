@@ -78,6 +78,10 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Gets the annotation of the class of the file to be generated.
+This based on <code>options.classAnnotation</code> and <a href="https://pub.dev/documentation/meta/1.16.0/meta/immutable-constant.html">immutable</a> which is the default (for <a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates.framework</a>).</p>
+</section>
 
 
     
@@ -88,13 +92,12 @@ static String formatAnnotation({
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  final classAnnotation = options.classAnnotation;
-  switch (template) {
-    case MeeMBaseBuildTemplates.framework:
-      return classAnnotation == immutable ? &#39;@immutable&#39; : classAnnotation.toString();
-  }
-}</code></pre>
+}) =&gt;
+    _formatAnnotation(
+      options: options,
+      objectType: objectType,
+      template: template,
+    );</code></pre>
 </section>
 
 

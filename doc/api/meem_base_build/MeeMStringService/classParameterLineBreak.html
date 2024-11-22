@@ -77,6 +77,10 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Converts <code>parameters</code> to a <a href="../../meem_base_build/BufferParameterResult.html">BufferParameterResult</a>.
+This can be utilized to format all the parameters to the generated file.</p>
+</section>
 
 
     
@@ -86,48 +90,8 @@
 static BufferParameterResult classParameterLineBreak(
   Parameters parameters, [
   String splitter = &#39;,&#39;,
-]) {
-  final normalBuffer = StringBuffer();
-  final optionalBuffer = StringBuffer();
-  final mappedBuffer = StringBuffer();
-  if (parameters.containsKey(ParameterType.normal)) {
-    final normalIndexedParameters = parameters[ParameterType.normal];
-    if (normalIndexedParameters != null) {
-      for (final parameter in normalIndexedParameters) {
-        normalBuffer.writeln(parameter.asParameter);
-      }
-    }
-  }
-  assert(
-    !parameters.containsKey(ParameterType.optional) &amp;&amp; !parameters.containsKey(ParameterType.mapped),
-    &#39;Optional and mapped parameters cannot be in a constructor&#39;,
-  );
-  if (parameters.containsKey(ParameterType.optional)) {
-    optionalBuffer.writeln(&#39;[&#39;);
-    final optionalIndexedParameters = parameters[ParameterType.normal];
-    if (optionalIndexedParameters != null) {
-      for (final parameter in optionalIndexedParameters) {
-        optionalBuffer.writeln(parameter.asParameter);
-      }
-    }
-    optionalBuffer.writeln(&#39;]&#39;);
-  }
-  if (parameters.containsKey(ParameterType.mapped)) {
-    optionalBuffer.writeln(&#39;{&#39;);
-    final mappedIndexedParameters = parameters[ParameterType.normal];
-    if (mappedIndexedParameters != null) {
-      for (final parameter in mappedIndexedParameters) {
-        mappedBuffer.writeln(parameter.asParameter);
-      }
-    }
-    optionalBuffer.writeln(&#39;}&#39;);
-  }
-  return (
-    normalParameterResult: normalBuffer.toString(),
-    optionalParameterResult: optionalBuffer.toString(),
-    mappedParameterResult: mappedBuffer.toString(),
-  );
-}</code></pre>
+]) =&gt;
+    _classParameterLineBreak(parameters, splitter);</code></pre>
 </section>
 
 

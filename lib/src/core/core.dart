@@ -1,5 +1,9 @@
+import 'package:analyzer/dart/element/element.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meem_base_build/meem_base_build.dart';
+import 'package:meem_base_build/src/generators/meem_event_generator.dart';
+import 'package:meem_base_build/src/generators/meem_exception_generator.dart';
+import 'package:meem_base_build/src/generators/meem_framework_generator.dart';
 import 'package:meta/meta.dart';
 
 part 'core_typedefs.dart';

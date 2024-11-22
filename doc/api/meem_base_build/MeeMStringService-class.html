@@ -63,28 +63,11 @@
 </h1></div>
 
     
+<section class="desc markdown">
+  <p>A service which handles string manipulation in this API.</p>
+</section>
 
 
-    <section>
-      <dl class="dl-horizontal">
-        
-
-        
-        
-
-
-
-        
-  <dt>Annotations</dt>
-  <dd>
-    <ul class="annotation-list clazz-relationships">
-        <li>@<a href="https://pub.dev/documentation/meta/1.16.0/meta/immutable-constant.html">immutable</a></li>
-    </ul>
-  </dd>
-
-
-      </dl>
-    </section>
 
     
     
@@ -187,7 +170,7 @@
 
 </dt>
 <dd>
-  
+  Assembles the process of the formating the class of the file to be generated.
   
 
 </dd>
@@ -200,7 +183,8 @@
 
 </dt>
 <dd>
-  
+  Converts <code>parameters</code> to a <a href="../meem_base_build/BufferParameterResult.html">BufferParameterResult</a>.
+This can be utilized to format all the parameters to the generated file.
   
 
 </dd>
@@ -213,7 +197,8 @@
 
 </dt>
 <dd>
-  
+  Gets the annotation of the class of the file to be generated.
+This based on <code>options.classAnnotation</code> and <a href="https://pub.dev/documentation/meta/1.16.0/meta/immutable-constant.html">immutable</a> which is the default (for <a href="../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates.framework</a>).
   
 
 </dd>
@@ -226,7 +211,7 @@
 
 </dt>
 <dd>
-  
+  Creates the header of the class of the file to be generated.
   
 
 </dd>
@@ -239,7 +224,7 @@
 
 </dt>
 <dd>
-  
+  Formats the constructor layout of the class of the file to be generated.
   
 
 </dd>
@@ -252,7 +237,7 @@
 
 </dt>
 <dd>
-  
+  Converts a <a href="https://api.dart.dev/stable/3.5.3/dart-core/List-class.html">List</a> to a (in this context) suitable string.
   
 
 </dd>
@@ -265,7 +250,7 @@
 
 </dt>
 <dd>
-  
+  Format the relevant override implementation (marked by <a href="https://api.dart.dev/stable/3.5.3/dart-core/override-constant.html">override</a>) of the class of the file to be generated.
   
 
 </dd>
@@ -278,7 +263,7 @@
 
 </dt>
 <dd>
-  
+  Creates the 'part of' section for the file to be generated.
   
 
 </dd>
@@ -291,7 +276,7 @@
 
 </dt>
 <dd>
-  
+  Creates the format for all properties (which could be also affiliated as a constructor parameter) of the class of the file to be generated.
   
 
 </dd>
@@ -304,7 +289,7 @@
 
 </dt>
 <dd>
-  
+  Selects the class template process via <code>template</code>.
   
 
 </dd>
@@ -317,20 +302,7 @@
 
 </dt>
 <dd>
-  
-  
-
-</dd>
-
-        <dt id="toSnakeCase" class="callable">
-  <span class="name"><a href="../meem_base_build/MeeMStringService/toSnakeCase.html">toSnakeCase</a></span><span class="signature">(<wbr><span class="parameter" id="toSnakeCase-param-name"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span></span>)
-    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span>
-  </span>
-  
-
-</dt>
-<dd>
-  
+  Tries to regain the original name which was provided via <a href="../meem_base_build/ClassOptions-class.html">ClassOptions</a>.
   
 
 </dd>

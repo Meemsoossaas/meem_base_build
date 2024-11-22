@@ -78,7 +78,7 @@
 
 </dt>
 <dd>
-  mimic class
+  A mock class of <a href="../meem_base_build/MeeMCore-class.html">MeeMCore</a> in 'meem_base'.
 </dd>
 
           <dt id="MeeMCoreEvent">
@@ -86,23 +86,7 @@
 
 </dt>
 <dd>
-  
-</dd>
-
-          <dt id="MeeMCoreException">
-  <span class="name "><a href="../meem_base_build/MeeMCoreException-class.html">MeeMCoreException</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
-
-</dt>
-<dd>
-  
-</dd>
-
-          <dt id="MeeMFrameworkValidationService">
-  <span class="name "><a href="../meem_base_build/MeeMFrameworkValidationService-class.html">MeeMFrameworkValidationService</a></span> 
-
-</dt>
-<dd>
-  
+  A mock event class of <a href="../meem_base_build/MeeMCoreEvent-class.html">MeeMCoreEvent</a> in 'meem_base'.
 </dd>
 
           <dt id="MeeMStringService">
@@ -110,7 +94,7 @@
 
 </dt>
 <dd>
-  
+  A service which handles string manipulation in this API.
 </dd>
 
       </dl>
@@ -125,7 +109,8 @@
 
 </dt>
 <dd>
-  
+  An enumeration representing all object types.
+Declared as a exhaustive representation of <a href="https://pub.dev/documentation/analyzer/6.8.0/dart_element_element/Element-class.html">Element</a>.
 </dd>
 
           <dt id="FormatClassConstructorStep">
@@ -133,7 +118,7 @@
 
 </dt>
 <dd>
-  
+  An enumeration representing all steps of <a href="../meem_base_build/MeeMStringService/formatConstructor.html">MeeMStringService.formatConstructor</a>.
 </dd>
 
           <dt id="FormatClassHeaderStep">
@@ -141,7 +126,7 @@
 
 </dt>
 <dd>
-  
+  An enumeration representing all steps of <a href="../meem_base_build/MeeMStringService/formatClassHeader.html">MeeMStringService.formatClassHeader</a>.
 </dd>
 
       </dl>
@@ -158,15 +143,32 @@
 
       <dl>
           
-  <dt id="Annotations" class="">
-  <span class="name"><a href="../meem_base_build/Annotations.html">Annotations</a></span>
-    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="../meem_base_build/MeeMCoreAnnotation-class.html">MeeMCoreAnnotation</a></span>&gt;</span>
+  <dt id="AnnotationMap" class="">
+  <span class="name"><a href="../meem_base_build/AnnotationMap.html">AnnotationMap</a></span>
+    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span>, <span class="type-parameter"><a href="https://api.dart.dev/stable/3.5.3/dart-core/Object-class.html">Object</a>?</span>&gt;</span>
   </span>
   
 
 </dt>
 <dd>
+  Represents the input on a <a href="../meem_base_build/MeeMBuildAnnotation-class.html">MeeMBuildAnnotation</a> for a <a href="../meem_base_build/ClassOptions-class.html">ClassOptions</a> on a <a href="../meem_base_build/MeeMBuildAnnotation-class.html">MeeMBuildAnnotation</a>.
+This will be converted into a <a href="../meem_base_build/ClassOptions-class.html">ClassOptions</a>.
+See <code>toEventClassOptions</code>.
   
+
+</dd>
+
+
+          
+  <dt id="Annotations" class="">
+  <span class="name"><a href="../meem_base_build/Annotations.html">Annotations</a></span>
+    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.5.3/dart-core/Type-class.html">Type</a></span>, <span class="type-parameter"><a href="../meem_base_build/MeeMCoreAnnotation-class.html">MeeMCoreAnnotation</a></span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Represents a map containing all usable annotation for the user.
   
 
 </dd>
@@ -181,22 +183,7 @@
 
 </dt>
 <dd>
-  
-  
-
-</dd>
-
-
-          
-  <dt id="Code" class="">
-  <span class="name"><a href="../meem_base_build/Code.html">Code</a></span>
-    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a>
-  </span>
-  
-
-</dt>
-<dd>
-  
+  A record which provides all parameters as strings.
   
 
 </dd>
@@ -211,7 +198,7 @@
 
   </dt>
   <dd>
-    
+    A callback function for <a href="../meem_base_build/MeeMBaseBuildCoreException-class.html">MeeMBaseBuildCoreException</a> which returns <code>T</code> as a value which represents the exception.
     
 
   </dd>
@@ -225,7 +212,37 @@
 
 </dt>
 <dd>
+  A record which represents a generic (like <code>T</code>) to be "stringified".
   
+
+</dd>
+
+
+          
+  <dt id="Generics" class="">
+  <span class="name"><a href="../meem_base_build/Generics.html">Generics</a></span>
+    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../meem_base_build/Generic.html">Generic</a></span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  A list of <a href="../meem_base_build/Generic.html">Generic</a>;
+  
+
+</dd>
+
+
+          
+  <dt id="GetterSetterProperties" class="">
+  <span class="name"><a href="../meem_base_build/GetterSetterProperties.html">GetterSetterProperties</a></span>
+    = <a href="https://api.dart.dev/stable/3.5.3/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../meem_base_build/GetterSetterProperty.html">GetterSetterProperty</a></span>&gt;</span>
+  </span>
+  
+
+</dt>
+<dd>
+  A list of <a href="../meem_base_build/GetterSetterProperty.html">GetterSetterProperty</a>.
   
 
 </dd>
@@ -240,7 +257,7 @@
 
 </dt>
 <dd>
-  
+  A record which represents a getter (and a setter if <code>setter</code> is <code>true</code>).
   
 
 </dd>
@@ -255,7 +272,8 @@
 
 </dt>
 <dd>
-  
+  A record representing a parameter of a class where <code>T</code> is the <a href="https://api.dart.dev/stable/3.5.3/dart-core/Type-class.html">Type</a> itself.
+This can be converted as so via <a href="../meem_base_build/Parameter-class.html">Parameter</a>
   
 
 </dd>
@@ -270,7 +288,10 @@
 
 </dt>
 <dd>
-  
+  A map containing <a href="../meem_base_build/Parameter-class.html">Parameter</a> for each type of parameter.
+The length of this can only be one or two.
+This is because there cannot be optional and mapped parameters in the same class constructor.
+This is being asserted in <a href="../meem_base_build/MeeMStringService-class.html">MeeMStringService</a>.
   
 
 </dd>
@@ -288,7 +309,7 @@
 
 </dt>
 <dd>
-  
+  A class which serves a based for exceptions in this API
 </dd>
 
           <dt id="MeeMCodeGeneratorException">
@@ -296,7 +317,15 @@
 
 </dt>
 <dd>
-  
+  An exception which represents a general exception in a <a href="../meem_base_build/MeeMCodeGenerator-class.html">MeeMCodeGenerator</a>.
+</dd>
+
+          <dt id="MeeMCoreException">
+  <span class="name "><a href="../meem_base_build/MeeMCoreException-class.html">MeeMCoreException</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> 
+
+</dt>
+<dd>
+  A mock exception of <a href="../meem_base_build/MeeMCore-class.html">MeeMCore</a> in 'meem_base'.
 </dd>
 
           <dt id="MeeMCoreGeneratorException">
@@ -304,7 +333,7 @@
 
 </dt>
 <dd>
-  
+  An exception which serves as a base for all possible code generating exceptions.
 </dd>
 
           <dt id="MeeMEventGeneratorException">
@@ -312,7 +341,7 @@
 
 </dt>
 <dd>
-  
+  An exception which handles problems in <code>MeeMEventGenerator</code>.
 </dd>
 
           <dt id="MeeMExceptionGeneratorException">
@@ -320,7 +349,7 @@
 
 </dt>
 <dd>
-  
+  An exception which handles problems in <code>MeeMExceptionGenerator</code>.
 </dd>
 
           <dt id="MeeMFrameworkGeneratorException">
@@ -328,7 +357,7 @@
 
 </dt>
 <dd>
-  
+  An exception which handles problems in <code>MeeMFrameworkGenerator</code>.
 </dd>
 
       </dl>
@@ -355,8 +384,11 @@
       <li class="section-title">Libraries</li>
       <li><a href="../annotation/annotation-library.html">annotation</a></li>
       <li><a href="../core/core-library.html">core</a></li>
+      <li><a href="../extensions/extensions-library.html">extensions</a></li>
       <li><a href="../generators/generators-library.html">generators</a></li>
       <li><a href="../meem_base_build/meem_base_build-library.html">meem_base_build</a></li>
+      <li><a href="../options/options-library.html">options</a></li>
+      <li><a href="../parameters/parameters-library.html">parameters</a></li>
 </ol>
 
   </div>

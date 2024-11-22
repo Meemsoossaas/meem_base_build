@@ -62,17 +62,26 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">MeeMExceptionBuild</span>(<wbr><ol class="parameter-list single-line"> <li><span class="parameter" id="-param-template"><span class="type-annotation"><a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates</a></span> <span class="parameter-name">template</span></span></li>
-</ol>)
+      <span class="name ">MeeMExceptionBuild</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-template"><span class="type-annotation"><a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates</a></span> <span class="parameter-name">template</span> = <span class="default-value">MeeMBaseBuildTemplates.framework</span>, </span></li>
+<li><span class="parameter" id="-param-exceptionOptions"><span class="type-annotation"><a href="../../meem_base_build/AnnotationMap.html">AnnotationMap</a>?</span> <span class="parameter-name">exceptionOptions</span>, </span></li>
+</ol>})
     </section>
 
     
+<section class="desc markdown">
+  <p>A declarable annotation for generating only an affiliated exception class.
+<a href="../../meem_base_build/MeeMBuildAnnotation/exceptionOptions.html">exceptionOptions</a> can obviously be customized.
+This annotation invokes <code>MeeMExceptionGenerator</code></p>
+</section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const MeeMExceptionBuild(super.template);</code></pre>
+  <pre class="language-dart"><code class="language-dart">const MeeMExceptionBuild({
+  super.template,
+  super.exceptionOptions,
+});</code></pre>
 </section>
 
 

@@ -6,22 +6,20 @@ import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';
 
-/// {@template meem}
+/// {@template meem_framework_generator}
 ///
-///
+/// The code generator for event (based on [MeeMCoreEvent]) and exception classes (based on [MeeMCoreException]).
 ///
 /// {@endtemplate}
 @protected
 final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> implements MeeMCodeGenerator {
-  /// {@template meem}
-  ///
-  ///
-  ///
-  /// {@endtemplate}
+  /// {@macro meem_framework_generator}
   static const MeeMFrameworkGenerator instance = MeeMFrameworkGenerator._();
 
+  @protected
   const MeeMFrameworkGenerator._();
 
+  /// {@macro meem_framework_generator}
   factory MeeMFrameworkGenerator() => instance;
 
   @override
@@ -87,13 +85,15 @@ final class MeeMFrameworkGenerator extends GeneratorForAnnotation<MeeMBuild> imp
   bool? get stringify => false;
 }
 
-/// {@template meem}
+/// {@template meem_framework_generator_framework_generator_builder}
 ///
-///
+/// The affiliated builder for [MeeMFrameworkGenerator].
 ///
 /// {@endtemplate}
+@protected
 Builder frameworkGeneratorBuilder(BuilderOptions options) => _frameworkGeneratorBuilder(options);
 
+@protected
 Builder _frameworkGeneratorBuilder(BuilderOptions _) => SharedPartBuilder(
       [MeeMFrameworkGenerator.instance],
       'meem_framework_generator',

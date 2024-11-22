@@ -78,6 +78,9 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Creates the header of the class of the file to be generated.</p>
+</section>
 
 
     
@@ -88,62 +91,12 @@ static String formatClassHeader({
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  switch (template) {
-    case MeeMBaseBuildTemplates.framework:
-      final buffer = StringBuffer();
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.prefix,
-          template: template,
-        ),
-      );
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.name,
-          template: template,
-        ),
-      );
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.declaredGenerics,
-          template: template,
-        ),
-      );
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.extendedClass,
-          template: template,
-        ),
-      );
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.mixins,
-          template: template,
-        ),
-      );
-      buffer.write(
-        _formatClassHeader(
-          options: options,
-          objectType: objectType,
-          step: FormatClassHeaderStep.implementers,
-          template: template,
-        ),
-      );
-      buffer.write(&#39; {&#39;);
-      return buffer.toString();
-  }
-}</code></pre>
+}) =&gt;
+    _formatClassHeader(
+      options: options,
+      objectType: objectType,
+      template: template,
+    );</code></pre>
 </section>
 
 

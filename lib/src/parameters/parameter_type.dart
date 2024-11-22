@@ -1,15 +1,15 @@
-part of 'options.dart';
+part of 'parameters.dart';
 
-/// {@template meem}
+/// {@template parameter_type}
 ///
-///
+/// An enumeration which contains all types of parameters in Dart.
 ///
 /// {@endtemplate}
-@protected
 enum ParameterType {
-  /// {@template meem}
+  /// {@template parameter_type_normal}
   ///
-  ///
+  /// Represents a 'normal' parameter.
+  /// Example: 'Class(int i);'.
   ///
   /// {@endtemplate}
   normal(
@@ -17,9 +17,10 @@ enum ParameterType {
     closingBracket: ')',
   ),
 
-  /// {@template meem}
+  /// {@template parameter_type_optional}
   ///
-  ///
+  /// Represents an optional parameter.
+  /// Example: 'Class([int? i]);'.
   ///
   /// {@endtemplate}
   optional(
@@ -27,9 +28,10 @@ enum ParameterType {
     closingBracket: ']',
   ),
 
-  /// {@template meem}
+  /// {@template parameter_type_mapped}
   ///
-  ///
+  /// Represents a mapped parameter.
+  /// Example: 'Class({int? i});'.
   ///
   /// {@endtemplate}
   mapped(
@@ -37,35 +39,36 @@ enum ParameterType {
     closingBracket: '}',
   );
 
-  /// {@template meem}
+  /// {@template parameter_type_opening_bracket}
   ///
-  ///
+  /// The opening bracket the parameter would be in.
   ///
   /// {@endtemplate}
   final String openingBracket;
 
-  /// {@template meem}
+  /// {@template parameter_type_closing_bracket}
   ///
-  ///
+  /// The closing bracket the parameter would be in.
   ///
   /// {@endtemplate}
   final String closingBracket;
 
+  /// {@macro parameter_type}
   const ParameterType({
     required this.openingBracket,
     required this.closingBracket,
   });
 
-  /// {@template meem}
+  /// {@template parameter_type_combined}
   ///
-  ///
+  /// Combines [openingBracket] and [closingBracket].
   ///
   /// {@endtemplate}
   String get combined => '$openingBracket$closingBracket';
 
-  /// {@template meem}
+  /// {@template parameter_type_combinable}
   ///
-  ///
+  /// Checks, if [other] (with [this]) is in a combined parameter scenario compatible.
   ///
   /// {@endtemplate}
   bool combinable(ParameterType other) => _combinable(other);

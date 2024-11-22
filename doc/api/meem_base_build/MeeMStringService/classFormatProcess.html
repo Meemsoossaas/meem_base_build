@@ -78,6 +78,9 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Assembles the process of the formating the class of the file to be generated.</p>
+</section>
 
 
     
@@ -88,56 +91,12 @@ static String classFormatProcess({
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  final classFormatBuffer = StringBuffer();
-  classFormatBuffer.writeln(
-    formatPrefix(
+}) =&gt;
+    _classFormatProcess(
       options: options,
       objectType: objectType,
       template: template,
-    ),
-  );
-  classFormatBuffer.writeln();
-  classFormatBuffer.writeln(
-    formatAnnotation(
-      options: options,
-      objectType: objectType,
-      template: template,
-    ),
-  );
-  classFormatBuffer.writeln(
-    formatClassHeader(
-      options: options,
-      objectType: objectType,
-      template: template,
-    ),
-  );
-  if (options.parameters.isNotEmpty) {
-    classFormatBuffer.writeln(
-      formatProperties(
-        options: options,
-        objectType: objectType,
-        template: template,
-      ),
-    );
-  }
-  classFormatBuffer.writeln(
-    formatConstructor(
-      options: options,
-      objectType: objectType,
-      template: template,
-    ),
-  );
-  classFormatBuffer.write(
-    formatOverrides(
-      options: options,
-      objectType: objectType,
-      template: template,
-    ),
-  );
-  classFormatBuffer.writeln(&#39;}&#39;);
-  return classFormatBuffer.toString();
-}</code></pre>
+    );</code></pre>
 </section>
 
 

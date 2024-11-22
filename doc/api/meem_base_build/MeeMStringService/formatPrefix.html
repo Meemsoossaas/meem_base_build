@@ -78,6 +78,9 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Creates the 'part of' section for the file to be generated.</p>
+</section>
 
 
     
@@ -88,12 +91,12 @@ static String formatPrefix({
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  switch (template) {
-    case MeeMBaseBuildTemplates.framework:
-      return &quot;part of &#39;${regainOriginalName(options.name).toLowerCase()}.dart&#39;;&quot;;
-  }
-}</code></pre>
+}) =&gt;
+    _formatPrefix(
+      options: options,
+      objectType: objectType,
+      template: template,
+    );</code></pre>
 </section>
 
 

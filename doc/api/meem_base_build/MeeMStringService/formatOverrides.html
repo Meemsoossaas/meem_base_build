@@ -78,6 +78,9 @@
 
     </section>
     
+<section class="desc markdown">
+  <p>Format the relevant override implementation (marked by <a href="https://api.dart.dev/stable/3.5.3/dart-core/override-constant.html">override</a>) of the class of the file to be generated.</p>
+</section>
 
 
     
@@ -88,23 +91,12 @@ static String formatOverrides({
   required ClassOptions options,
   required FrameObjectType objectType,
   MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-}) {
-  switch (template) {
-    case MeeMBaseBuildTemplates.framework:
-      if (options.template == MeeMBaseBuildTemplates.framework) {
-        final buffer = StringBuffer();
-        final exceptionClassName =
-            options.name.contains(&#39;Event&#39;) ? options.name.replaceFirst(&#39;Event&#39;, &#39;Exception&#39;) : options.name;
-        buffer.writeln(&#39;\t@override&#39;);
-        buffer.writeln(
-          &#39;\tMeeMCoreException&lt;${options.generics[0].identifier}&gt; get exception =&gt; $exceptionClassName();&#39;,
-        );
-        return buffer.toString();
-      } else {
-        throw Exception();
-      }
-  }
-}</code></pre>
+}) =&gt;
+    _formatOverrides(
+      options: options,
+      objectType: objectType,
+      template: template,
+    );</code></pre>
 </section>
 
 

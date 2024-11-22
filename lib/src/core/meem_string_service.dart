@@ -1,32 +1,45 @@
 part of 'core.dart';
 
-/// {@template meem}
+/// {@template meem_string_service}
 ///
-///
+/// A service which handles string manipulation in this API.
 ///
 /// {@endtemplate}
 abstract final class MeeMStringService {
-  /// {@template meem}
+  /// {@template meem_string_service_format_list}
   ///
-  ///
+  /// Converts a [List] to a (in this context) suitable string.
   ///
   /// {@endtemplate}
+  @internal
+  static String formatList(List source) => _formatList(source);
+
   @protected
-  static String formatList(List source) {
+  static String _formatList(List source) {
     final buffer = StringBuffer();
     for (int i = 0; i < source.length; i++) {
-      buffer.write('${source[i]}${i == 0 || i == source.length - 1 ? '' : ','}');
+      buffer.write(
+        '${source[i]}${i == 0 || i == source.length - 1 ? '' : ','}',
+      );
     }
     return buffer.toString();
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_class_parameter_line_break}
   ///
-  ///
+  /// Converts [parameters] to a [BufferParameterResult].
+  /// This can be utilized to format all the parameters to the generated file.
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static BufferParameterResult classParameterLineBreak(
+    Parameters parameters, [
+    String splitter = ',',
+  ]) =>
+      _classParameterLineBreak(parameters, splitter);
+
+  @protected
+  static BufferParameterResult _classParameterLineBreak(
     Parameters parameters, [
     String splitter = ',',
   ]) {
@@ -72,58 +85,16 @@ abstract final class MeeMStringService {
     );
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_regain_original_name}
   ///
-  ///
+  /// Tries to regain the original name which was provided via [ClassOptions].
   ///
   /// {@endtemplate}
-  static String _formatProperties(MeeMBaseBuildTemplates template, Parameters properties) {
-    if (properties.isEmpty) return '';
-    switch (template) {
-      case MeeMBaseBuildTemplates.framework:
-        final buffer = StringBuffer();
-        properties.forEach((key, value) {
-          switch (key) {
-            case ParameterType.normal:
-              final normalParameters = properties[ParameterType.normal] ?? [];
-              for (final normalParameter in normalParameters) {
-                buffer.writeln(normalParameter.asProperty);
-              }
-              break;
-            case ParameterType.optional:
-              break;
-            case ParameterType.mapped:
-              break;
-          }
-        });
-        return buffer.toString();
-    }
-  }
+  @internal
+  static String regainOriginalName(String className) => _regainOriginalName(className);
 
-  /// {@template meem}
-  ///
-  ///
-  ///
-  /// {@endtemplate}
   @protected
-  static String toSnakeCase(String name) {
-    final snakeCase = name
-        .replaceAllMapped(
-          RegExp(r'([a-z])([A-Z])'),
-          (Match match) => '${match.group(1)}_${match.group(2)}',
-        )
-        .toLowerCase();
-
-    return snakeCase;
-  }
-
-  /// {@template meem}
-  ///
-  ///
-  ///
-  /// {@endtemplate}
-  @protected
-  static String regainOriginalName(String className) {
+  static String _regainOriginalName(String className) {
     if (className.contains('Event')) {
       return className.replaceAll('Event', '');
     } else if (className.contains('Exception')) {
@@ -132,13 +103,25 @@ abstract final class MeeMStringService {
     throw Exception();
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_format_prefix}
   ///
-  ///
+  /// Creates the 'part of' section for the file to be generated.
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static String formatPrefix({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _formatPrefix(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _formatPrefix({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
@@ -149,13 +132,26 @@ abstract final class MeeMStringService {
     }
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_format_annotation}
   ///
-  ///
+  /// Gets the annotation of the class of the file to be generated.
+  /// This based on [options.classAnnotation] and [immutable] which is the default (for [MeeMBaseBuildTemplates.framework]).
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static String formatAnnotation({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _formatAnnotation(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _formatAnnotation({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
@@ -167,7 +163,87 @@ abstract final class MeeMStringService {
     }
   }
 
+  /// {@template meem_string_service_format_class_header}
+  ///
+  /// Creates the header of the class of the file to be generated.
+  ///
+  /// {@endtemplate}
+  @internal
+  static String formatClassHeader({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _formatClassHeader(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
   static String _formatClassHeader({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) {
+    switch (template) {
+      case MeeMBaseBuildTemplates.framework:
+        final buffer = StringBuffer();
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.prefix,
+            template: template,
+          ),
+        );
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.name,
+            template: template,
+          ),
+        );
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.declaredGenerics,
+            template: template,
+          ),
+        );
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.extendedClass,
+            template: template,
+          ),
+        );
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.mixins,
+            template: template,
+          ),
+        );
+        buffer.write(
+          _formatClassHeader2(
+            options: options,
+            objectType: objectType,
+            step: FormatClassHeaderStep.implementers,
+            template: template,
+          ),
+        );
+        buffer.write(' {');
+        return buffer.toString();
+    }
+  }
+
+  @protected
+  static String _formatClassHeader2({
     required ClassOptions options,
     required FrameObjectType objectType,
     required FormatClassHeaderStep step,
@@ -200,79 +276,12 @@ abstract final class MeeMStringService {
     }
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_format_properties}
   ///
-  ///
-  ///
-  /// {@endtemplate}
-  @protected
-  static String formatClassHeader({
-    required ClassOptions options,
-    required FrameObjectType objectType,
-    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
-  }) {
-    switch (template) {
-      case MeeMBaseBuildTemplates.framework:
-        final buffer = StringBuffer();
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.prefix,
-            template: template,
-          ),
-        );
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.name,
-            template: template,
-          ),
-        );
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.declaredGenerics,
-            template: template,
-          ),
-        );
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.extendedClass,
-            template: template,
-          ),
-        );
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.mixins,
-            template: template,
-          ),
-        );
-        buffer.write(
-          _formatClassHeader(
-            options: options,
-            objectType: objectType,
-            step: FormatClassHeaderStep.implementers,
-            template: template,
-          ),
-        );
-        buffer.write(' {');
-        return buffer.toString();
-    }
-  }
-
-  /// {@template meem}
-  ///
-  ///
+  /// Creates the format for all properties (which could be also affiliated as a constructor parameter) of the class of the file to be generated.
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static String formatProperties({
     required ClassOptions options,
     required FrameObjectType objectType,
@@ -287,13 +296,52 @@ abstract final class MeeMStringService {
     }
   }
 
-  /// {@template meem}
+  @protected
+  static String _formatProperties(
+    MeeMBaseBuildTemplates template,
+    Parameters properties,
+  ) {
+    if (properties.isEmpty) return '';
+    switch (template) {
+      case MeeMBaseBuildTemplates.framework:
+        final buffer = StringBuffer();
+        properties.forEach((key, value) {
+          switch (key) {
+            case ParameterType.normal:
+              final normalParameters = properties[ParameterType.normal] ?? [];
+              for (final normalParameter in normalParameters) {
+                buffer.writeln(normalParameter.asProperty);
+              }
+              break;
+            case ParameterType.optional:
+              break;
+            case ParameterType.mapped:
+              break;
+          }
+        });
+        return buffer.toString();
+    }
+  }
+
+  /// {@template meem_string_service_format_constructor}
   ///
-  ///
+  /// Formats the constructor layout of the class of the file to be generated.
   ///
   /// {@endtemplate}
   @internal
   static String formatConstructor({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _formatConstructor(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _formatConstructor({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
@@ -302,7 +350,7 @@ abstract final class MeeMStringService {
       case MeeMBaseBuildTemplates.framework:
         final buffer = StringBuffer();
         buffer.write(
-          _formatConstructor(
+          _formatConstructor2(
             options: options,
             objectType: objectType,
             step: FormatClassConstructorStep.constructorPrefix,
@@ -310,7 +358,7 @@ abstract final class MeeMStringService {
           ),
         );
         buffer.write(
-          _formatConstructor(
+          _formatConstructor2(
             options: options,
             objectType: objectType,
             step: FormatClassConstructorStep.constructorName,
@@ -318,7 +366,7 @@ abstract final class MeeMStringService {
           ),
         );
         buffer.write(
-          _formatConstructor(
+          _formatConstructor2(
             options: options,
             objectType: objectType,
             step: FormatClassConstructorStep.parameters,
@@ -326,7 +374,7 @@ abstract final class MeeMStringService {
           ),
         );
         buffer.write(
-          _formatConstructor(
+          _formatConstructor2(
             options: options,
             objectType: objectType,
             step: FormatClassConstructorStep.postInitializing,
@@ -334,7 +382,7 @@ abstract final class MeeMStringService {
           ),
         );
         buffer.write(
-          _formatConstructor(
+          _formatConstructor2(
             options: options,
             objectType: objectType,
             step: FormatClassConstructorStep.assertion,
@@ -345,7 +393,8 @@ abstract final class MeeMStringService {
     }
   }
 
-  static String _formatConstructor({
+  @protected
+  static String _formatConstructor2({
     required ClassOptions options,
     required FrameObjectType objectType,
     required FormatClassConstructorStep step,
@@ -383,13 +432,25 @@ abstract final class MeeMStringService {
     }
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_format_overrides}
   ///
-  ///
+  /// Format the relevant override implementation (marked by [override]) of the class of the file to be generated.
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static String formatOverrides({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _formatOverrides(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _formatOverrides({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
@@ -411,13 +472,25 @@ abstract final class MeeMStringService {
     }
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_class_format_process}
   ///
-  ///
+  /// Assembles the process of the formating the class of the file to be generated.
   ///
   /// {@endtemplate}
-  @protected
+  @internal
   static String classFormatProcess({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _classFormatProcess(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _classFormatProcess({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
@@ -472,12 +545,48 @@ abstract final class MeeMStringService {
     return classFormatBuffer.toString();
   }
 
-  /// {@template meem}
+  /// {@template meem_string_service_fulfill_class_template}
   ///
+  /// Selects the class template process via [template].
   ///
+  /// # Step 1 -> [formatPrefix]
+  ///
+  /// {@macro meem_string_service_format_prefix}
+  ///
+  /// # Step 2 -> [formatAnnotation]
+  ///
+  /// {@macro meem_string_service_format_annotation}
+  ///
+  /// # Step 3 -> [formatClassHeader]
+  ///
+  /// {@macro meem_string_service_format_class_header}
+  ///
+  /// # Step 4 -> [formatProperties]
+  ///
+  /// {@macro meem_string_service_format_properties}
+  ///
+  /// # Step 5 -> [formatConstructor]
+  ///
+  /// {@macro meem_string_service_format_constructor}
+  ///
+  /// # Step 6 -> [formatOverrides]
+  ///
+  /// {@macro meem_string_service_format_overrides}
   ///
   /// {@endtemplate}
   static String fulfillClassTemplate({
+    required ClassOptions options,
+    required FrameObjectType objectType,
+    MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,
+  }) =>
+      _fulfillClassTemplate(
+        options: options,
+        objectType: objectType,
+        template: template,
+      );
+
+  @protected
+  static String _fulfillClassTemplate({
     required ClassOptions options,
     required FrameObjectType objectType,
     MeeMBaseBuildTemplates template = MeeMBaseBuildTemplates.framework,

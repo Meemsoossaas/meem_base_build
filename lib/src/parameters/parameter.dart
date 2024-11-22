@@ -1,12 +1,13 @@
 part of 'parameters.dart';
 
-/// {@template meem}
+/// {@template parameter}
 ///
-///
+/// A class which presents a parameter with the type [ParameterType.normal].
 ///
 /// {@endtemplate}
 @immutable
 final class Parameter<T extends Object> extends MeeMBaseBuildParameter<T> {
+  /// {@macro parameter}
   const Parameter({
     required String name,
     bool nullable = false,

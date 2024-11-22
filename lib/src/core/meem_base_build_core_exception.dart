@@ -1,26 +1,23 @@
 part of 'core.dart';
 
-/// {@template meem}
+/// {@template meem_base_build_core_exception}
 ///
-///
+/// A class which serves a based for exceptions in this API
 ///
 /// {@endtemplate}
-@protected
+@internal
 abstract class MeeMBaseBuildCoreException<T, V extends Object> extends Equatable implements Object, Exception {
-  /// {@template meem}
+  /// {@template meem_base_build_core_exception_message}
   ///
-  ///
+  /// The message of the exception being placed.
   ///
   /// {@endtemplate}
   final String message;
 
-  /// {@template meem}
-  ///
-  ///
-  ///
-  /// {@endtemplate}
+  /// {@macro exception_result}
   final ExceptionResult<T, V> result;
 
+  /// {@macro meem_base_build_core_exception}
   const MeeMBaseBuildCoreException([
     this.message = 'An exception (MeeMBaseBuildCoreException) has occurred',
     this.result,

@@ -63,17 +63,26 @@
     <section class="multi-line-signature">
         
   
+<div>
+  <ol class="annotation-list">
+    <li>@<a href="https://pub.dev/documentation/meta/1.16.0/meta/internal-constant.html">internal</a></li>
+  </ol>
+</div>
 <span class="name ">Generic</span> = (<span class="field">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/Type-class.html">Type</a>?</span> <span class="field-name">extendedType</span>, </span><span class="field"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.5.3/dart-core/String-class.html">String</a></span> <span class="field-name">identifier</span>}</span>)</span>
 
 
     </section>
 
     
+<section class="desc markdown">
+  <p>A record which represents a generic (like <code>T</code>) to be "stringified".</p>
+</section>
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">typedef Generic = ({
+  <pre class="language-dart"><code class="language-dart">@internal
+typedef Generic = ({
   String identifier,
   Type? extendedType,
 });</code></pre>

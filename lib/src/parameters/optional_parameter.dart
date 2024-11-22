@@ -1,8 +1,8 @@
 part of 'parameters.dart';
 
-/// {@template meem}
+/// {@template optional_parameter}
 ///
-///
+/// A class which presents a parameter with the type [ParameterType.optional].
 ///
 /// {@endtemplate}
 @immutable
