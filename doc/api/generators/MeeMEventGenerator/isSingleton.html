@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the MeeMEventBuild constructor from Class MeeMEventBuild from the meem_base_build library, for the Dart programming language.">
-  <title>MeeMEventBuild constructor - MeeMEventBuild - meem_base_build library - Dart API</title>
+  <meta name="description" content="API docs for the isSingleton property from the MeeMEventGenerator class, for the Dart programming language.">
+  <title>isSingleton property - MeeMEventGenerator class - generators library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">meem_base_build</a></li>
-    <li><a href="../../meem_base_build/meem_base_build-library.html">meem_base_build.dart</a></li>
-    <li><a href="../../meem_base_build/MeeMEventBuild-class.html">MeeMEventBuild</a></li>
-    <li class="self-crumb">MeeMEventBuild const constructor</li>
+    <li><a href="../../generators/generators-library.html">generators.dart</a></li>
+    <li><a href="../../generators/MeeMEventGenerator-class.html">MeeMEventGenerator</a></li>
+    <li class="self-crumb">isSingleton property</li>
   </ol>
-  <div class="self-name">MeeMEventBuild</div>
+  <div class="self-name">isSingleton</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -51,44 +51,52 @@
 </header>
 <main>
 
-  <div
-      id="dartdoc-main-content"
-      class="main-content"
-      data-above-sidebar="meem_base_build&#47;MeeMEventBuild-class-sidebar.html"
-      data-below-sidebar="">
-      <div>
-<h1><span class="kind-constructor">MeeMEventBuild</span> constructor 
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="generators&#47;MeeMEventGenerator-class-sidebar.html"
+    data-below-sidebar="">
+    <div>
+<h1><span class="kind-property">isSingleton</span> property 
 </h1></div>
 
+
+        
+  <section id="getter">
+
     <section class="multi-line-signature">
-      const
-      <span class="name ">MeeMEventBuild</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-template"><span class="type-annotation"><a href="../../meem_base_build/MeeMBaseBuildTemplates.html">MeeMBaseBuildTemplates</a></span> <span class="parameter-name">template</span> = <span class="default-value">MeeMBaseBuildTemplates.framework</span>, </span></li>
-<li><span class="parameter" id="-param-eventOptions"><span class="type-annotation"><a href="../../meem_base_build/AnnotationMap.html">AnnotationMap</a>?</span> <span class="parameter-name">eventOptions</span>, </span></li>
-</ol>})
+      
+  <div>
+    <ol class="annotation-list">
+        <li>@<a href="https://api.dart.dev/stable/3.5.3/dart-core/override-constant.html">override</a></li>
+    </ol>
+  </div>
+      <span class="returntype"><a href="https://api.dart.dev/stable/3.5.3/dart-core/bool-class.html">bool</a></span>
+      <span class="name ">isSingleton</span>
+      <div class="features"><span class="feature">override</span></div>
+
     </section>
 
     
 <section class="desc markdown">
-  <p>A declarable annotation for generating only an affiliated event class.
-<a href="../../meem_base_build/MeeMBuildAnnotation/eventOptions.html">eventOptions</a> can obviously be customized.
-This annotation invokes <a href="../../generators/MeeMEventGenerator-class.html">MeeMEventGenerator</a></p>
+  <p>Confirms if the code generator is a singleton.
+This can be as basic as returning <code>true</code> or <code>false</code>.</p>
 </section>
-
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const MeeMEventBuild({
-  super.template,
-  super.eventOptions,
-});</code></pre>
+  <pre class="language-dart"><code class="language-dart">@override
+bool get isSingleton =&gt; MeeMCoreGenerator.generatorsAreSingleton;</code></pre>
 </section>
 
+  </section>
 
-  </div> <!-- /.main-content -->
 
-  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
-    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+</div> <!-- /.main-content -->
+
+<div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+  <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
 <header id="header-search-sidebar" class="hidden-l">
   <form class="search-sidebar" role="search">
     <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
@@ -97,18 +105,18 @@ This annotation invokes <a href="../../generators/MeeMEventGenerator-class.html"
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../../index.html">meem_base_build</a></li>
-    <li><a href="../../meem_base_build/meem_base_build-library.html">meem_base_build</a></li>
-    <li><a href="../../meem_base_build/MeeMEventBuild-class.html">MeeMEventBuild</a></li>
-    <li class="self-crumb">MeeMEventBuild const constructor</li>
+    <li><a href="../../generators/generators-library.html">generators</a></li>
+    <li><a href="../../generators/MeeMEventGenerator-class.html">MeeMEventGenerator</a></li>
+    <li class="self-crumb">isSingleton property</li>
 </ol>
 
 
-    <h5>MeeMEventBuild class</h5>
-    <div id="dartdoc-sidebar-left-content"></div>
-  </div><!--/.sidebar-offcanvas-left-->
+  <h5>MeeMEventGenerator class</h5>
+  <div id="dartdoc-sidebar-left-content"></div>
+</div><!--/.sidebar-offcanvas-->
 
-  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-  </div><!--/.sidebar-offcanvas-->
+<div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+</div><!--/.sidebar-offcanvas-->
 
 </main>
 
