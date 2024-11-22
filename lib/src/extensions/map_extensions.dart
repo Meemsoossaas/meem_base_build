@@ -13,7 +13,7 @@ extension MapExtensions<K, V> on Map<K, V> {
   ///
   /// {@endtemplate}
   @internal
-  ClassOptions toEventClassOptions(MeeMBaseBuildTemplates template) {
+  ClassOptions toClassOptions(MeeMBaseBuildTemplates template) {
     switch (template) {
       case MeeMBaseBuildTemplates.framework:
         return ClassOptions.framework(
