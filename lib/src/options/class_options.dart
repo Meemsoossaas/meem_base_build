@@ -174,7 +174,7 @@ final class ClassOptions extends MeeMBaseBuildOptions<ClassElement> {
     List<Type>? mixins,
     bool? hasConstructor,
     Parameters? parameters,
-    List<Generic>? generics,
+    Generics? generics,
     bool? frontFrameworkGenerics,
     Object? classAnnotation,
     GetterSetterProperties? getters,

@@ -9,7 +9,7 @@ part of 'annotation.dart';
 /// This means currently, [template] shouldn't be modified.
 ///
 /// {@endtemplate}
-@internal
+@immutable
 abstract base class MeeMBuildAnnotation extends MeeMCoreAnnotation {
   /// {@template meem_build_annotation_template}
   ///

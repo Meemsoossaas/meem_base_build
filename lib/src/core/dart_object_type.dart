@@ -6,7 +6,6 @@ part of 'core.dart';
 /// Declared as a exhaustive representation of [Element].
 ///
 /// {@endtemplate}
-@internal
 enum DartObjectType {
   /// {@template dart_object_type_class_object}
   ///

@@ -5,7 +5,6 @@ part of 'options.dart';
 /// An enumeration (especially for [MeeMBaseBuildTemplates.framework]) which contains different 'types' of classes to be generated.
 ///
 /// {@endtemplate}
-@internal
 enum FrameObjectType {
   /// {@template frame_object_type_event}
   ///

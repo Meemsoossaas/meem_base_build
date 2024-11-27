@@ -6,7 +6,6 @@ part of 'options.dart';
 /// A [MeeMCoreGenerator] can then consider the users input (via this).
 ///
 /// {@endtemplate}
-@internal
 sealed class MeeMBaseBuildOptions<E extends Element> extends Equatable implements Object {
   /// {@template meem_base_build_options_name}
   ///

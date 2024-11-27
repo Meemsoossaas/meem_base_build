@@ -5,7 +5,7 @@ part of 'annotation.dart';
 /// A class which serves the basis for the framework of annotation in the API.
 ///
 /// {@endtemplate}
-@internal
+@immutable
 abstract base class MeeMCoreAnnotation extends Equatable implements Object {
   /// {@template meem_core_annotation_all_annotations}
   ///

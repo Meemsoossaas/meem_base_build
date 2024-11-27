@@ -25,4 +25,19 @@ final class OptionalParameter<T extends Object> extends MeeMBaseBuildParameter<T
 
   @override
   String get asParameter => '$type${nullable ? '?' : ''} $name${defaultValue != null ? ' = ${defaultValue!}' : ''},';
+
+  @override
+  MeeMBaseBuildParameter<Object> copyWith({
+    String? name,
+    T? defaultValue,
+    bool? required,
+    bool? nullable,
+    bool? finalized,
+  }) =>
+      OptionalParameter(
+        name: name ?? this.name,
+        defaultValue: defaultValue ?? this.defaultValue,
+        nullable: nullable ?? this.nullable,
+        finalized: finalized ?? this.finalized,
+      );
 }

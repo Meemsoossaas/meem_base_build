@@ -5,7 +5,7 @@ part of 'core.dart';
 /// A mock class of [MeeMCore] in 'meem_base'.
 ///
 /// {@endtemplate}
-@protected
+@immutable
 abstract base class MeeMCore<EVENT extends MeeMCoreEvent, EXCEPTION extends MeeMCoreException> extends Equatable
     implements Object {
   /// {@template meem_core_exception}

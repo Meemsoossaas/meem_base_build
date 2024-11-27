@@ -1,7 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:meem_base_build/src/extensions/extensions.dart';
-import 'package:meta/meta.dart' show immutable, protected;
+import 'package:meta/meta.dart' show protected;
 import 'package:source_gen/source_gen.dart';
 
 import '../../meem_base_build.dart';

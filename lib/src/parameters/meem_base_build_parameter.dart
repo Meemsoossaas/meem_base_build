@@ -98,6 +98,19 @@ sealed class MeeMBaseBuildParameter<T extends Object> extends Equatable implemen
 
   String get _asProperty => finalized ? 'final $type${nullable ? '?' : ''} $name' : 'final $type $name';
 
+  /// {@template meem_base_build_parameter_copy_with}
+  ///
+  /// Copies this with additional (but optional) parameters which represent the properties of this.
+  ///
+  /// {@endtemplate}
+  MeeMBaseBuildParameter copyWith({
+    String? name,
+    T? defaultValue,
+    bool? required,
+    bool? nullable,
+    bool? finalized,
+  });
+
   @override
   List<Object?> get props => [
         name,

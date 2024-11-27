@@ -27,5 +27,21 @@ final class MappedParameter<T extends Object> extends MeeMBaseBuildParameter<T> 
 
   @override
   String get asParameter =>
-      '${this.required ? 'required ' : ''}$type${nullable ? '?' : ''} $name${defaultValue != null ? ' = ${defaultValue!}' : ''},';
+      '${required ? 'required ' : ''}$type${nullable ? '?' : ''} $name${defaultValue != null ? ' = ${defaultValue!}' : ''},';
+
+  @override
+  MeeMBaseBuildParameter<Object> copyWith({
+    String? name,
+    T? defaultValue,
+    bool? required,
+    bool? nullable,
+    bool? finalized,
+  }) =>
+      MappedParameter(
+        name: name ?? this.name,
+        defaultValue: defaultValue ?? this.defaultValue,
+        required: required ?? this.required,
+        nullable: nullable ?? this.nullable,
+        finalized: finalized ?? this.finalized,
+      );
 }

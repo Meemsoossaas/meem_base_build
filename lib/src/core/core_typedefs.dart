@@ -7,7 +7,6 @@ part of 'core.dart';
 /// See [toEventClassOptions].
 ///
 /// {@endtemplate}
-@internal
 typedef AnnotationMap = Map<String, Object?>;
 
 /// {@template annotations}
@@ -15,7 +14,6 @@ typedef AnnotationMap = Map<String, Object?>;
 /// Represents a map containing all usable annotation for the user.
 ///
 /// {@endtemplate}
-@internal
 typedef Annotations = Map<Type, MeeMCoreAnnotation>;
 
 /// {@template exception_result}
@@ -23,7 +21,6 @@ typedef Annotations = Map<Type, MeeMCoreAnnotation>;
 /// A callback function for [MeeMBaseBuildCoreException] which returns [T] as a value which represents the exception.
 ///
 /// {@endtemplate}
-@internal
 typedef ExceptionResult<T, V extends Object> = T Function(V instance)?;
 
 /// {@template parameter_record}
@@ -32,7 +29,6 @@ typedef ExceptionResult<T, V extends Object> = T Function(V instance)?;
 /// This can be converted as so via [Parameter]
 ///
 /// {@endtemplate}
-@internal
 typedef ParameterRecord<T extends Object> = ({
   Type type,
   String name,
@@ -50,7 +46,6 @@ typedef ParameterRecord<T extends Object> = ({
 /// This is being asserted in [MeeMStringService].
 ///
 /// {@endtemplate}
-@internal
 typedef Parameters = Map<ParameterType, List<Parameter>>;
 
 /// {@template buffer_parameter_result}
@@ -69,7 +64,6 @@ typedef Parameters = Map<ParameterType, List<Parameter>>;
 ///   - or: [ParameterType.mapped]
 ///
 /// {@endtemplate}
-@internal
 typedef BufferParameterResult = ({
   String normalParameterResult,
   String optionalParameterResult,
@@ -81,7 +75,6 @@ typedef BufferParameterResult = ({
 /// A record which represents a generic (like [T]) to be "stringified".
 ///
 /// {@endtemplate}
-@internal
 typedef Generic = ({
   String identifier,
   Type? extendedType,
@@ -92,7 +85,6 @@ typedef Generic = ({
 /// A list of [Generic];
 ///
 /// {@endtemplate}
-@internal
 typedef Generics = List<Generic>;
 
 /// {@template getter_setter_property}
@@ -100,7 +92,6 @@ typedef Generics = List<Generic>;
 /// A record which represents a getter (and a setter if [setter] is [true]).
 ///
 /// {@endtemplate}
-@internal
 typedef GetterSetterProperty = ({
   String name,
   bool nullable,
@@ -112,5 +103,4 @@ typedef GetterSetterProperty = ({
 /// A list of [GetterSetterProperty].
 ///
 /// {@endtemplate}
-@internal
 typedef GetterSetterProperties = List<GetterSetterProperty>;

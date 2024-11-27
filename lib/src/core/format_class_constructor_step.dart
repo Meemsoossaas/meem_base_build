@@ -5,7 +5,6 @@ part of 'core.dart';
 /// An enumeration representing all steps of [MeeMStringService.formatConstructor].
 ///
 /// {@endtemplate}
-@internal
 enum FormatClassConstructorStep implements Comparable<FormatClassConstructorStep> {
   /// {@template format_class_constructor_step_constructor_prefix}
   ///

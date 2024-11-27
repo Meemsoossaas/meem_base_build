@@ -5,7 +5,6 @@ part of 'generators.dart';
 /// An interface which sets scope functionality to be implemented for code generation.
 ///
 /// {@endtemplate}
-@internal
 abstract interface class MeeMCodeGenerator extends MeeMCoreGenerator {
   /// {@macro meem_code_generator}
   const MeeMCodeGenerator();

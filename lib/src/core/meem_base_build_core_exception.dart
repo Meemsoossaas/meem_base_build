@@ -5,7 +5,6 @@ part of 'core.dart';
 /// A class which serves a based for exceptions in this API
 ///
 /// {@endtemplate}
-@internal
 abstract class MeeMBaseBuildCoreException<T, V extends Object> extends Equatable implements Object, Exception {
   /// {@template meem_base_build_core_exception_message}
   ///

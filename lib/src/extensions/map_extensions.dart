@@ -5,19 +5,17 @@ part of 'extensions.dart';
 /// Extensions on [Map] to form thr functionality of this API.
 ///
 /// {@endtemplate}
-@internal
 extension MapExtensions<K, V> on Map<K, V> {
   /// {@template map_extensions_to_event_class_options}
   ///
   /// Allows this to be converted into [ClassOptions] based on [template].
   ///
   /// {@endtemplate}
-  @internal
   ClassOptions toClassOptions(MeeMBaseBuildTemplates template) {
     switch (template) {
       case MeeMBaseBuildTemplates.framework:
         return ClassOptions.framework(
-          name: this['name'] as String,
+          name: this['name'] as String? ?? '',
           docDescription: this['docDescription'] as String?,
           prefixes: this['prefixes'] as ClassPrefixes?,
           implements: this['implements'] as List<Type>?,
