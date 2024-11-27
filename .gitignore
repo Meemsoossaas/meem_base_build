@@ -1,5 +1,7 @@
 .dart_tool/
 
+doc
+
 pubspec.lock
 
 lib/src/annotation/annotation.dart
